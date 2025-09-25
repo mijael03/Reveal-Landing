@@ -1,0 +1,15 @@
+@import "tailwindcss";
+/* en tu CSS principal */
+@config "../tailwind.config.js";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Aplicar el color de fondo principal al body */
+body {
+  background-color: theme('colors.primary.bg');
+  color: theme('colors.text.primary');
+  margin: 0;
+  padding: 0;
+}
