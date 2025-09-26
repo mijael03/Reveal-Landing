@@ -13,3 +13,10 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* 
+.feature-card-border {
+  border: 1px solid;
+  border-image-source: linear-gradient(2.53deg, rgba(255, 255, 255, 0.08) -3.17%, rgba(255, 255, 255, 0.8) 52.21%, rgba(255, 255, 255, 0.08) 119.97%);
+  border-image-slice: 1;
+} */

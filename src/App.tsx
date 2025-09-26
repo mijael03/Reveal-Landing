@@ -1,5 +1,6 @@
 import NavBar from './components/NavBar'
 import Overview from './components/Overview'
+import Process from './components/Process'
 
 function App() {
   return (
@@ -9,6 +10,9 @@ function App() {
 
       {/* Overview Section - incluye video y features */}
       <Overview />
+
+      {/* Process Section */}
+      <Process />
     </div>
   )
 }
