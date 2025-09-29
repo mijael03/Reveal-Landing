@@ -1,38 +1,14 @@
 import Button from './Button'
 
 const Process = () => {
-    const steps = [
-        {
-            number: "PASO 1",
-            title: "Planos y modelos",
-            description: "Utilizamos tus planos o modelos digitales (AutoCAD, Revit, renders o modelos 3D).",
-            icon: "📋",
-            bgColor: "#4A5568"
-        },
-        {
-            number: "PASO 2",
-            title: "Desarrollo interactivo",
-            description: "Convertimos tu proyecto en un visor inmersivo 3D.",
-            icon: "🏠",
-            bgColor: "#2D3748"
-        },
-        {
-            number: "PASO 3",
-            title: "Experiencia Reveal",
-            description: "Explora y comparte tu proyecto con clientes en tiempo real.",
-            icon: "💻",
-            bgColor: "#1A202C"
-        }
-    ]
-
     const features = [
         {
             title: "Vista de lotes",
-            icon: "🏘️"
+            icon: "/visor_lotes.svg"
         },
         {
             title: "Vista de departamentos",
-            icon: "🏢"
+            icon: "/visor_departamentos.svg"
         }
     ]
 
@@ -55,7 +31,7 @@ const Process = () => {
                 </div>
 
                 {/* Process Flow */}
-                <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-16">
+                <div className="flex flex-col lg:flex-row items-start justify-center gap-8 mb-16">
                     {/* Left Steps */}
                     <div className="flex flex-col">
                         {/* PASO 1 */}
@@ -72,8 +48,8 @@ const Process = () => {
                         </div>
 
                         {/* Iconos de archivos */}
-                        <div className="flex flex-col gap-3 ml-4">
-                            <div className="flex items-center gap-3">
+                        <div className="flex flex-col gap-5 ml-4">
+                            <div className="flex items-center gap-5">
                                 <div className="w-24 h-24 bg-gray-600 rounded-2xl flex justify-center items-center">
                                     <img
                                         src="/autocad-icon.svg"
@@ -84,23 +60,23 @@ const Process = () => {
                                 <span className="text-text-primary text-sm">AutoCAD</span>
                             </div>
 
-                            <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 bg-gray-600 rounded flex items-center justify-center">
+                            <div className="flex items-center gap-5">
+                                <div className="w-24 h-24 bg-gray-600 rounded-2xl flex justify-center items-center">
                                     <img
                                         src="/revit-icon.svg"
                                         alt="Revit"
-                                        className="w-6 h-6"
+                                        className="w-14 h-14"
                                     />
                                 </div>
                                 <span className="text-text-primary text-sm">Revit</span>
                             </div>
 
-                            <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 bg-gray-600 rounded flex items-center justify-center">
+                            <div className="flex items-center gap-5">
+                                <div className="w-24 h-24 bg-gray-600 rounded-2xl flex justify-center items-center">
                                     <img
                                         src="/sketchup_icon.svg"
                                         alt="SketchUp"
-                                        className="w-6 h-6"
+                                        className="w-14 h-14"
                                     />
                                 </div>
                                 <span className="text-text-primary text-sm">SketchUp</span>
@@ -109,38 +85,63 @@ const Process = () => {
                     </div>
 
                     {/* Center - Reveal Logo */}
-                    <div className="flex flex-col items-center mx-8">
-                        <div className="w-32 h-32 bg-gray-700 rounded-lg flex items-center justify-center mb-4">
+                    <div className="flex flex-col items-center mx-8 my-14">
+                        <div className="w-44 h-44 bg-gray-700 rounded-lg flex items-center justify-center mb-12">
                             <div className="flex flex-col items-center">
                                 <img
                                     src="/icon.svg"
                                     alt="Reveal Icon"
-                                    className="w-8 h-8 mb-2"
+                                    className="w-9 h-9 mb-2"
                                 />
                                 <img
                                     src="/logotipo.svg"
                                     alt="Reveal Logo"
-                                    className="h-6"
+                                    className="h-8"
                                 />
                             </div>
+
+                        </div>
+                        <div className="w-64 h-32 p-4 flex flex-col justify-cente">
+                            <div className="text-text-secondary text-xs mb-1">
+                                PASO 2
+                            </div>
+                            <h3 className="text-text-primary font-semibold text-xl mb-2">
+                                Desarrollo interactivo
+                            </h3>
+                            <p className="text-text-secondary text-xs leading-tight">
+                                Convertimos tu proyecto en un visor inmersivo 3D.
+                            </p>
                         </div>
                     </div>
 
                     {/* Right Features */}
-                    <div className="flex flex-col gap-6">
-                        {features.map((feature, index) => (
-                            <div
-                                key={index}
-                                className="w-64 h-20 bg-gray-700 rounded-lg p-4 flex items-center gap-4"
-                            >
-                                <div className="text-2xl">
-                                    {feature.icon}
-                                </div>
-                                <h3 className="text-text-primary font-semibold">
-                                    {feature.title}
-                                </h3>
+                    <div className="flex flex-col ">
+                        <div className="w-64 p-4 flex flex-col justify-center mb-8">
+                            <div className="text-text-secondary text-xs mb-1">
+                                PASO 3
                             </div>
-                        ))}
+                            <h3 className="text-text-primary font-semibold text-xl mb-2">
+                                Experiencia Reveal
+                            </h3>
+                            <p className="text-text-secondary text-xs leading-tight">
+                                Explora y comparte tu proyecto con clientes en tiempo real.
+                            </p>
+                        </div>
+                        <div className='flex flex-col ml-4'>
+                            {features.map((feature, index) => (
+                                <div key={index} className="flex items-center gap-5 mb-5">
+                                    <div className="w-24 h-24 bg-gray-600 rounded-2xl flex justify-center items-center">
+                                        <img
+                                            src={feature.icon}
+                                            alt="Revit"
+                                            className="w-14 h-14"
+                                        />
+                                    </div>
+                                    <span className="text-text-primary text-sm">{feature.title}</span>
+                                </div>
+                            ))}
+                        </div>
+
                     </div>
                 </div>
 
