@@ -1,8 +1,20 @@
 import { useState, useEffect } from 'react'
 import Button from './Button'
+import { useModal } from '../contexts/ModalContext'
 
 const Overview = () => {
     const [isScrolled, setIsScrolled] = useState(false)
+    const [isInitialLoaded, setIsInitialLoaded] = useState(false)
+    const { openDemoModal } = useModal()
+
+    useEffect(() => {
+        // Animación inicial al cargar
+        const timer = setTimeout(() => {
+            setIsInitialLoaded(true)
+        }, 800) // Delay para que aparezca después del NavBar
+
+        return () => clearTimeout(timer)
+    }, [])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -40,24 +52,32 @@ const Overview = () => {
 
     return (
         <section className="relative min-h-[200vh]">
-            {/* Contenido de texto inicial - se desvanece con scroll */}
-            <div className={`flex flex-col items-center text-center max-w-4xl mx-auto px-8 py-12 transition-all duration-1000 ${isScrolled ? 'opacity-0 -translate-y-20' : 'opacity-100 translate-y-0'
+            {/* Contenido de texto inicial - con animación fade-up mejorada */}
+            <div className={`flex flex-col items-center text-center mx-auto px-8 py-12 transition-all duration-1000 ${isScrolled
+                ? 'opacity-0 -translate-y-20'
+                : isInitialLoaded
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-8'
                 }`}>
-                <h1 className="text-3xl md:text-5xl font-bold text-gray-400 mb-4 leading-tight">
+                <h1 className={`text-3xl md:text-5xl font-bold text-white translate-y-8'
+                }`} style={{ transitionDelay: '200ms' }}>
                     Presenta tus proyectos como nunca antes
                 </h1>
 
-                <p className="text-lg md:text-xl text-text-secondary mb-8">
+                <p className={`text-lg md:text-xl text-text-secondary  mt-8 mb-8 transition-all duration-800 ease-out ${isInitialLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`} style={{ transitionDelay: '400ms' }}>
                     Conoce REVEAL, el visor inmersivo que transforma la forma de vender.
                 </p>
 
-                <Button className="mb-8">
-                    Agenda una demo
-                </Button>
+                <div className={`transition-all duration-800 ease-out ${isInitialLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    }`} style={{ transitionDelay: '600ms' }}>
+                    <Button className="mb-8" onClick={openDemoModal}>
+                        Agenda una demo
+                    </Button>
+                </div>
             </div>
+
             <div className="sticky top-0 flex w-full h-screen">
-
-
                 <div
                     className={`transition-all duration-1000 ease-in-out bg-primary-bg flex flex-col justify-center items-center ${isScrolled ? 'opacity-100 scale-100 w-1/2' : 'opacity-0 scale-95 w-0'
                         }`}>
@@ -121,8 +141,7 @@ const Overview = () => {
                     </video>
                 </div>
             </div>
-
-        </section >
+        </section>
     )
 }
 
