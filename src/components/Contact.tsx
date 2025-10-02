@@ -54,18 +54,18 @@ const Contact = () => {
     return (
         <section id="contact-section" className=" bg-primary-bg pt-16 pb-8 px-8">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col lg:flex-row gap-16 items-start">
-
+                {/* Desktop Layout */}
+                <div className="hidden lg:flex flex-row gap-16 items-start">
                     {/* Left Side - Contact Info (1/3) */}
                     <div className={`lg:w-1/3 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`}>
-                        <h2 className={`text-4xl md:text-5xl font-bold text-text-primary mb-6 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        <h2 className={`text-4xl md:text-5xl font-bold text-text-primary mb-6 text-left transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                             }`} style={{ transitionDelay: '200ms' }}>
                             Lleva tu proyecto<br />
                             al siguiente nivel
                         </h2>
 
-                        <p className={`text-text-secondary text-lg mb-8 leading-relaxed transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        <p className={`text-text-secondary text-lg mb-8 leading-relaxed text-left transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                             }`} style={{ transitionDelay: '400ms' }}>
                             Completa el formulario y nos contactaremos contigo.
                         </p>
@@ -77,7 +77,7 @@ const Contact = () => {
                         {/* Contact Information */}
                         <div className={`space-y-4 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                             }`} style={{ transitionDelay: '800ms' }}>
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3 justify-start">
                                 <img
                                     src="/phone.svg"
                                     alt="Teléfono"
@@ -85,7 +85,7 @@ const Contact = () => {
                                 />
                                 <span className="text-text-secondary">+51 946 835 734</span>
                             </div>
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3 justify-start">
                                 <img
                                     src="/mail.svg"
                                     alt="Email"
@@ -215,6 +215,174 @@ const Contact = () => {
                                         </Button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Mobile Layout */}
+                <div className="lg:hidden">
+                    <div className="flex flex-col items-center text-center">
+                        {/* Header Content */}
+                        <div className={`transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            }`}>
+                            <h2 className={`text-4xl md:text-5xl font-bold text-text-primary mb-6 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                }`} style={{ transitionDelay: '200ms' }}>
+                                Lleva tu proyecto<br />
+                                al siguiente nivel
+                            </h2>
+
+                            <p className={`text-text-secondary text-lg mb-8 leading-relaxed transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                }`} style={{ transitionDelay: '400ms' }}>
+                                Completa el formulario y nos contactaremos contigo.
+                            </p>
+
+                            {/* Gradient Divider */}
+                            <div className={`gradient-divider my-8 mx-auto transition-all duration-700 ease-out ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+                                }`} style={{ transitionDelay: '600ms', transformOrigin: 'center' }}></div>
+
+                            {/* Contact Information */}
+                            <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                }`} style={{ transitionDelay: '800ms' }}>
+                                <div className="flex items-center gap-3">
+                                    <img
+                                        src="/phone.svg"
+                                        alt="Teléfono"
+                                        className="w-3 h-3 text-text-primary"
+                                    />
+                                    <span className="text-text-secondary">+51 946 835 734</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <img
+                                        src="/mail.svg"
+                                        alt="Email"
+                                        className="w-3 h-3 text-text-primary"
+                                    />
+                                    <span className="text-text-secondary">contacto@revealvision.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Contact Form - Centered and Narrower for Mobile */}
+                    <div className="max-w-md mx-auto">
+                        <div className={`transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            }`} style={{ transitionDelay: '400ms' }}>
+
+                            {/* Form Container */}
+                            <div>
+                                <div className="rounded-lg bg-primary-bg p-8">
+                                    <form onSubmit={handleSubmit} className="space-y-6">
+
+                                        {/* Name */}
+                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                            }`} style={{ transitionDelay: '600ms' }}>
+                                            <label className="block text-text-secondary text-sm font-medium mb-2">
+                                                Nombre
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="nombre"
+                                                value={formData.nombre}
+                                                onChange={handleInputChange}
+                                                placeholder="Escribir nombre"
+                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                required
+                                            />
+                                        </div>
+
+                                        {/* Last Name */}
+                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                            }`} style={{ transitionDelay: '700ms' }}>
+                                            <label className="block text-text-secondary text-sm font-medium mb-2">
+                                                Apellido
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="apellido"
+                                                value={formData.apellido}
+                                                onChange={handleInputChange}
+                                                placeholder="Escribir apellido"
+                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                required
+                                            />
+                                        </div>
+
+                                        {/* Email */}
+                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                            }`} style={{ transitionDelay: '800ms' }}>
+                                            <label className="block text-text-secondary text-sm font-medium mb-2">
+                                                Correo electrónico
+                                            </label>
+                                            <input
+                                                type="email"
+                                                name="correo"
+                                                value={formData.correo}
+                                                onChange={handleInputChange}
+                                                placeholder="Escribir correo"
+                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                required
+                                            />
+                                        </div>
+
+                                        {/* Phone */}
+                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                            }`} style={{ transitionDelay: '900ms' }}>
+                                            <label className="block text-text-secondary text-sm font-medium mb-2">
+                                                Número telefónico
+                                            </label>
+                                            <input
+                                                type="tel"
+                                                name="telefono"
+                                                value={formData.telefono}
+                                                onChange={handleInputChange}
+                                                placeholder="Escribir número"
+                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                required
+                                            />
+                                        </div>
+
+                                        {/* Company Name */}
+                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                            }`} style={{ transitionDelay: '1000ms' }}>
+                                            <label className="block text-text-secondary text-sm font-medium mb-2">
+                                                Nombre de la empresa
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="empresa"
+                                                value={formData.empresa}
+                                                onChange={handleInputChange}
+                                                placeholder="Escribir nombre de la empresa"
+                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                            />
+                                        </div>
+
+                                        {/* Additional Comments */}
+                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                            }`} style={{ transitionDelay: '1100ms' }}>
+                                            <label className="block text-text-secondary text-sm font-medium mb-2">
+                                                Comentario adicional
+                                            </label>
+                                            <textarea
+                                                name="comentario"
+                                                value={formData.comentario}
+                                                onChange={handleInputChange}
+                                                placeholder="Escribir comentario adicional..."
+                                                rows={4}
+                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors resize-none"
+                                            />
+                                        </div>
+
+                                        {/* Submit Button */}
+                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                                            }`} style={{ transitionDelay: '1200ms' }}>
+                                            <Button className="w-full">
+                                                Enviar
+                                            </Button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -90,7 +90,7 @@ const Footer = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <div className={`transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    <div className={`hidden lg:block transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`} style={{ transitionDelay: '600ms' }}>
                         <Button>
                             Empieza ahora

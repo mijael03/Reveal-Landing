@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Button from './Button'
 
 interface DemoModalProps {
@@ -15,6 +15,20 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
         pais: '',
         producto: ''
     })
+
+    // Deshabilitar scroll del body cuando el modal está abierto
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+
+        // Cleanup al desmontar el componente
+        return () => {
+            document.body.style.overflow = 'unset'
+        }
+    }, [isOpen])
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target
@@ -35,32 +49,32 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
 
     return (
         <div className="fixed inset-0 bg-neutral-600/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-primary-bg rounded-2xl px-30 py-20 w-full max-w-4xl  overflow-y-auto relative">
+            <div className="bg-primary-bg rounded-2xl px-6 py-8 md:px-30 md:py-20 w-full max-w-md md:max-w-4xl max-h-[90vh] md:max-h-none overflow-y-auto relative">
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 text-white/70 hover:text-white w-10 transition-colors"
+                    className="absolute top-4 right-4 md:top-6 md:right-6 text-white/70 hover:text-white w-6 md:w-10 transition-colors z-10"
                     aria-label="Cerrar modal"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 md:w-10 md:h-10">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
 
                 {/* Header */}
-                <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-white mb-4">
+                <div className="text-center mb-6 md:mb-8">
+                    <h2 className="text-xl md:text-3xl font-bold text-white mb-2 md:mb-4">
                         Descubre REVEAL en acción
                     </h2>
-                    <p className="text-white/70 text-lg">
+                    <p className="text-white/70 text-sm md:text-lg">
                         Completa tus datos y recibe tu acceso a una demo personalizada
                     </p>
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                     {/* First Row - Name and Last Name */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div>
                             <label className="block text-white text-sm font-medium mb-2">
                                 Nombre
@@ -71,7 +85,7 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                 value={formData.nombre}
                                 onChange={handleInputChange}
                                 placeholder="Escribir nombre"
-                                className="w-full px-4 py-3  border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
+                                className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
                                 required
                             />
                         </div>
@@ -85,14 +99,14 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                 value={formData.apellido}
                                 onChange={handleInputChange}
                                 placeholder="Escribir apellido"
-                                className="w-full px-4 py-3  border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
+                                className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
                                 required
                             />
                         </div>
                     </div>
 
                     {/* Second Row - Email and Company */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div>
                             <label className="block text-white text-sm font-medium mb-2">
                                 Correo corporativo
@@ -103,7 +117,7 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                 value={formData.correo}
                                 onChange={handleInputChange}
                                 placeholder="Escribir correo"
-                                className="w-full px-4 py-3  border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
+                                className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
                                 required
                             />
                         </div>
@@ -116,15 +130,15 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                 name="empresa"
                                 value={formData.empresa}
                                 onChange={handleInputChange}
-                                placeholder="Escribir número"
-                                className="w-full px-4 py-3  border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
+                                placeholder="Escribir nombre de la empresa"
+                                className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
                                 required
                             />
                         </div>
                     </div>
 
                     {/* Third Row - Country and Product */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div>
                             <label className="block text-white text-sm font-medium mb-2">
                                 País
@@ -134,7 +148,7 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                     name="pais"
                                     value={formData.pais}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 bg-primary-bg border border-neutral-700 rounded-lg text-white/50 focus:outline-none focus:border-white/30 transition-colors appearance-none cursor-pointer hover:bg-neutral-800"
+                                    className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white/50 focus:outline-none focus:border-white/50 transition-colors appearance-none cursor-pointer"
                                     required
                                 >
                                     <option value="" className="bg-neutral-900 text-white/50">Selecciona país</option>
@@ -162,10 +176,10 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                     name="producto"
                                     value={formData.producto}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 bg-primary-bg border border-neutral-700 rounded-lg text-white/50 focus:outline-none focus:border-white/30 transition-colors appearance-none cursor-pointer hover:bg-neutral-800"
+                                    className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white/50 focus:outline-none focus:border-white/50 transition-colors appearance-none cursor-pointer"
                                     required
                                 >
-                                    <option value="" className="bg-neutral-900 text-white/50">Selecciona producto</option>
+                                    <option value="" className="bg-neutral-900 text-white/50">Visor Lotes</option>
                                     <option value="visor-lotes" className="bg-neutral-900 text-white">Visor de lotes</option>
                                     <option value="visor-departamentos" className="bg-neutral-900 text-white">Visor de departamentos</option>
                                     <option value="todos-visores" className="bg-neutral-900 text-white">Todos los visores</option>

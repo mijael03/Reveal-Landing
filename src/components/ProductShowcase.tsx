@@ -57,16 +57,12 @@ const ProductShowcase = () => {
         }, 400)
     }
 
-    // Efecto inicial para mostrar el primer slide
-    // useEffect(() => {
-    //     setContentVisible(true)
-    // }, [])
-
     return (
-        <section className="min-h-[80vh] bg-primary-bg pt-10 px-8 flex items-center relative overflow-hidden">
+        <section id="products-section" className="min-h-screen md:min-h-[90vh] bg-primary-bg md:pt-10 px-8 flex items-center relative overflow-hidden">
             <div className="w-full max-w-[1400px] mx-auto">
-                <div className="relative h-[700px] flex items-start justify-center">
 
+                {/* Layout Desktop - Mantener el layout original */}
+                <div className="hidden md:block relative h-[700px] items-start justify-center">
                     {/* Video con fade-up por scroll + animación de desplazamiento */}
                     <div
                         ref={videoFade.elementRef as React.RefObject<HTMLDivElement>}
@@ -94,13 +90,13 @@ const ProductShowcase = () => {
                     >
                         <div className="space-y-8">
                             <div>
-                                <p className={`text-white text-xl font-bold mb-4 tracking-[0.15em] uppercase transition-all duration-600 ease-out ${contentVisible && activeSlide === 0
+                                <p className={`text-white text-xl font-bold gap-4 mb-4 tracking-[0.15em] uppercase transition-all duration-600 ease-out ${contentVisible && activeSlide === 0
                                     ? 'opacity-100 translate-y-0'
                                     : 'opacity-0 translate-y-4'
                                     }`} style={{ transitionDelay: '100ms' }}>
                                     PRODUCTOS
                                 </p>
-                                <h2 className={`text-5xl md:text-6xl font-bold text-text-primary mb-8 leading-tight transition-all duration-600 ease-out ${contentVisible && activeSlide === 0
+                                <h2 className={`text-4xl md:text-5xl font-bold text-text-primary mb-8 leading-tight transition-all duration-600 ease-out ${contentVisible && activeSlide === 0
                                     ? 'opacity-100 translate-y-0'
                                     : 'opacity-0 translate-y-4'
                                     }`} style={{ transitionDelay: '200ms' }}>
@@ -119,7 +115,7 @@ const ProductShowcase = () => {
                                 : 'opacity-0 translate-y-4'
                                 }`} style={{ transitionDelay: '400ms' }}></div>
 
-                            <div className="space-y-6">
+                            <div className="space-y-2">
                                 {slides[0].features.map((feature, index) => (
                                     <div key={index} className={`flex items-start gap-4 transition-all duration-600 ease-out ${contentVisible && activeSlide === 0
                                         ? 'opacity-100 translate-y-0'
@@ -149,7 +145,7 @@ const ProductShowcase = () => {
                                     }`} style={{ transitionDelay: '100ms' }}>
                                     PRODUCTOS
                                 </p>
-                                <h2 className={`text-5xl md:text-6xl font-bold text-text-primary mb-8 leading-tight transition-all duration-600 ease-out ${contentVisible && activeSlide === 1
+                                <h2 className={`text-4xl md:text-5xl font-bold text-text-primary mb-8 leading-tight transition-all duration-600 ease-out ${contentVisible && activeSlide === 1
                                     ? 'opacity-100 translate-y-0'
                                     : 'opacity-0 translate-y-4'
                                     }`} style={{ transitionDelay: '200ms' }}>
@@ -163,12 +159,12 @@ const ProductShowcase = () => {
                                 </p>
                             </div>
 
-                            <div className={`gradient-divider my-10 transition-all duration-600 ease-out ${contentVisible && activeSlide === 1
+                            <div className={`gradient-divider my-5 transition-all duration-600 ease-out ${contentVisible && activeSlide === 1
                                 ? 'opacity-100 translate-y-0'
                                 : 'opacity-0 translate-y-4'
                                 }`} style={{ transitionDelay: '400ms' }}></div>
 
-                            <div className="space-y-6">
+                            <div className="space-y-2">
                                 {slides[1].features.map((feature, index) => (
                                     <div key={index} className={`flex items-start gap-4 transition-all duration-600 ease-out ${contentVisible && activeSlide === 1
                                         ? 'opacity-100 translate-y-0'
@@ -184,12 +180,69 @@ const ProductShowcase = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Layout Mobile - Nuevo layout vertical */}
+                <div className="md:hidden flex flex-col space-y-8">
+                    {/* Contenido de texto arriba */}
+                    <div className="text-center">
+                        <p className={`text-white text-lg font-bold mb-4 tracking-[0.15em] uppercase transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                            }`}>
+                            PRODUCTOS
+                        </p>
+
+                        <h2 className={`text-3xl font-bold text-text-primary mb-6 leading-tight transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                            }`} style={{ transitionDelay: '100ms' }}>
+                            {slides[activeSlide].title}
+                        </h2>
+
+                        <p className={`text-white text-base leading-relaxed mb-8 transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                            }`} style={{ transitionDelay: '200ms' }}>
+                            {slides[activeSlide].description}
+                        </p>
+
+                        {/* Divider con gradiente */}
+                        <div className={`gradient-divider my-8 transition-all duration-500 ease-out ${
+                            contentVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+                        }`} style={{ transitionDelay: '300ms' }}></div>
+
+                        {/* Features */}
+                        <div className="space-y-4">
+                            {slides[activeSlide].features.map((feature, index) => (
+                                <div key={index} className={`flex items-start gap-3 text-left transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                                    }`} style={{ transitionDelay: `${400 + (index * 100)}ms` }}>
+                                    <div className="w-2 h-2 rounded-full bg-white mt-2 flex-shrink-0"></div>
+                                    <p className="text-white text-sm leading-relaxed">
+                                        {feature}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Video abajo */}
+                    <div className="flex justify-center">
+                        <div className={`w-full h-[300px] rounded-[15px] border border-gray-400 overflow-hidden shadow-2xl transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                            }`} style={{ transitionDelay: '600ms' }}>
+                            <video
+                                key={activeSlide}
+                                className="w-full h-full object-cover"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                            >
+                                <source src={slides[activeSlide].video} type="video/mp4" />
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            {/* Indicadores del slider con fade-up por scroll */}
+            {/* Indicadores del slider */}
             <div
                 ref={indicatorsFade.elementRef as React.RefObject<HTMLDivElement>}
-                className={`absolute bottom-30 left-1/2 transform -translate-x-1/2 flex gap-6 z-30 ${indicatorsFade.animationClasses}`}
+                className={`absolute bottom-0 md:bottom-20 left-1/2 transform -translate-x-1/2 flex gap-6 z-30 ${indicatorsFade.animationClasses}`}
                 style={indicatorsFade.style}
             >
                 {slides.map((_, index) => (
@@ -197,7 +250,7 @@ const ProductShowcase = () => {
                         key={index}
                         onClick={() => handleSlideChange(index)}
                         disabled={isAnimating}
-                        className="w-16 h-16 transition-all duration-300 hover:scale-110 disabled:cursor-not-allowed"
+                        className="w-12 h-12 md:w-16 md:h-16 transition-all duration-300 hover:scale-110 disabled:cursor-not-allowed"
                     >
                         <img
                             src={activeSlide === index ? "/slider_active.svg" : "/slider_inactive.svg"}

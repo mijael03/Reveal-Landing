@@ -31,7 +31,7 @@ const Partnership = () => {
     return (
         <section
             id="partnership-section"
-            className="bg-cover bg-center bg-no-repeat flex items-center justify-center relative pt-20 pb-48"
+            className="bg-cover bg-center bg-no-repeat flex items-center justify-center relative pt-15 lg:pt-20 pb-15 lg:pb-48"
             style={{
                 backgroundImage: 'url(/gradient_background.png)'
             }}
@@ -45,7 +45,7 @@ const Partnership = () => {
                 </p>
 
                 {/* Logos Container */}
-                <div className={`flex items-center justify-center gap-8 mb-10 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                <div className={`flex items-center justify-center lg:gap-8 gap-4 mb-10 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`} style={{ transitionDelay: '400ms' }}>
 
                     {/* Zefiron Logo */}
@@ -54,12 +54,12 @@ const Partnership = () => {
                         <img
                             src="/zefiron.png"
                             alt="Zefiron"
-                            className="h-16 w-auto hover:scale-105 transition-transform duration-300"
+                            className="h-10 lg:h-16 w-auto hover:scale-105 transition-transform duration-300"
                         />
                     </div>
 
                     {/* Plus Symbol */}
-                    <div className={`text-white text-4xl font-light transition-all duration-700 ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+                    <div className={`text-white text-2xl lg:text-4xl font-light transition-all duration-700 ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
                         }`} style={{ transitionDelay: '700ms' }}>
                         +
                     </div>
@@ -70,7 +70,7 @@ const Partnership = () => {
                         <img
                             src="/reveal.png"
                             alt="Reveal"
-                            className="h-10 w-auto hover:scale-105 transition-transform duration-300"
+                            className="h-6 lg:h-10 w-auto hover:scale-105 transition-transform duration-300"
                         />
                     </div>
                 </div>
