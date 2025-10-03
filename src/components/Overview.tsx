@@ -86,7 +86,7 @@ const Overview = () => {
                 <div className={`transition-all duration-800 ease-out ${isInitialLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`} style={{ transitionDelay: '600ms' }}>
                     <Button className="mb-8" onClick={openDemoModal}>
-                        Agenda una demo
+                        Solicita una demo
                     </Button>
                 </div>
             </div>
