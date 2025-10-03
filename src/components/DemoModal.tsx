@@ -85,7 +85,7 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                 value={formData.nombre}
                                 onChange={handleInputChange}
                                 placeholder="Escribir nombre"
-                                className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
+                                className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
                                 required
                             />
                         </div>
@@ -99,7 +99,7 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                 value={formData.apellido}
                                 onChange={handleInputChange}
                                 placeholder="Escribir apellido"
-                                className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
+                                className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
                                 required
                             />
                         </div>
@@ -117,7 +117,7 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                 value={formData.correo}
                                 onChange={handleInputChange}
                                 placeholder="Escribir correo"
-                                className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
+                                className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
                                 required
                             />
                         </div>
@@ -131,7 +131,7 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                 value={formData.empresa}
                                 onChange={handleInputChange}
                                 placeholder="Escribir nombre de la empresa"
-                                className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
+                                className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
                                 required
                             />
                         </div>
@@ -148,7 +148,7 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                     name="pais"
                                     value={formData.pais}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white/50 focus:outline-none focus:border-white/50 transition-colors appearance-none cursor-pointer"
+                                    className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white/50 focus:outline-none focus:border-white/50 transition-colors appearance-none cursor-pointer"
                                     required
                                 >
                                     <option value="" className="bg-neutral-900 text-white/50">Selecciona país</option>
@@ -176,10 +176,10 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                                     name="producto"
                                     value={formData.producto}
                                     onChange={handleInputChange}
-                                    className="w-full px-4 py-3 bg-transparent border border-neutral-600 rounded-lg text-white/50 focus:outline-none focus:border-white/50 transition-colors appearance-none cursor-pointer"
+                                    className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white/50 focus:outline-none focus:border-white/50 transition-colors appearance-none cursor-pointer"
                                     required
                                 >
-                                    <option value="" className="bg-neutral-900 text-white/50">Visor Lotes</option>
+                                    <option value="" className="bg-neutral-900 text-white/50">Selecciona producto</option>
                                     <option value="visor-lotes" className="bg-neutral-900 text-white">Visor de lotes</option>
                                     <option value="visor-departamentos" className="bg-neutral-900 text-white">Visor de departamentos</option>
                                     <option value="todos-visores" className="bg-neutral-900 text-white">Todos los visores</option>

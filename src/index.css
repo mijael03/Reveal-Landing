@@ -2,8 +2,22 @@
 /* en tu CSS principal */
 @config "../tailwind.config.js";
 
+@font-face {
+  font-family: "HelveticaCustom";
+  src: url("/fonts/Helvetica.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HelveticaCustom";
+  src: url("/fonts/HelveticaNeueBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "HelveticaCustom", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 /* Aplicar el color de fondo principal al body */

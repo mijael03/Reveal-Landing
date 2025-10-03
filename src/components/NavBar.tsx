@@ -92,7 +92,7 @@ const NavBar = () => {
                 <a
                   href="#process-section"
                   onClick={(e) => handleNavClick(e, 'process-section')}
-                  className="text-white text-2xl font-medium block pb-4"
+                  className="text-white text-2xl font-bold block pb-4"
                 >
                   ¿Cómo lo hacemos?
                 </a>

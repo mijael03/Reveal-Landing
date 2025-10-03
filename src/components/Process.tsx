@@ -59,7 +59,7 @@ const Process = () => {
                 {/* Header */}
                 <div className={`text-center mb-16 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}>
-                    <p className={`text-text-secondary text-lg tracking-[0.15em] transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                    <p className={`text-text-secondary text-lg font-bold tracking-[0.15em] transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`} style={{ transitionDelay: '200ms' }}>
                         ¿CÓMO LO HACEMOS?
                     </p>
@@ -113,18 +113,21 @@ const Process = () => {
                         {/* Center - Reveal Logo */}
                         <div className={`flex flex-col items-center my-14 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
                             }`} style={{ transitionDelay: '1200ms' }}>
-                            <div className="w-44 h-44 bg-neutral-500 rounded-lg flex items-center justify-center mb-12 hover:scale-105 transition-transform duration-300">
-                                <div className="flex flex-col items-center">
-                                    <img
-                                        src="/icon.svg"
-                                        alt="Reveal Icon"
-                                        className="w-9 h-9 mb-2"
-                                    />
-                                    <img
-                                        src="/logotipo.svg"
-                                        alt="Reveal Logo"
-                                        className="h-8"
-                                    />
+                            {/* Contenedor con borde gradiente */}
+                            <div className="rounded-lg p-[1px] mb-12 hover:scale-105 transition-transform duration-300 bg-gradient-green-yellow">
+                                <div className="w-44 h-44 bg-neutral-500 rounded-lg flex items-center justify-center">
+                                    <div className="flex flex-col items-center">
+                                        <img
+                                            src="/icon.svg"
+                                            alt="Reveal Icon"
+                                            className="w-9 h-9 mb-2"
+                                        />
+                                        <img
+                                            src="/logotipo.svg"
+                                            alt="Reveal Logo"
+                                            className="h-8"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div className="w-64 h-32 p-4 flex flex-col justify-center">
@@ -266,18 +269,21 @@ const Process = () => {
                                 </p>
 
                                 <div className="flex items-center justify-center">
-                                    <div className="w-20 h-20 bg-neutral-500 rounded-lg flex items-center justify-center">
-                                        <div className="flex flex-col items-center">
-                                            <img
-                                                src="/icon.svg"
-                                                alt="Reveal Icon"
-                                                className="w-6 h-6 mb-1"
-                                            />
-                                            <img
-                                                src="/logotipo.svg"
-                                                alt="Reveal Logo"
-                                                className="h-4"
-                                            />
+                                    {/* Contenedor con borde gradiente */}
+                                    <div className="rounded-lg p-[1px] bg-gradient-green-yellow">
+                                        <div className="w-20 h-20 bg-neutral-500 rounded-lg flex items-center justify-center">
+                                            <div className="flex flex-col items-center">
+                                                <img
+                                                    src="/icon.svg"
+                                                    alt="Reveal Icon"
+                                                    className="w-6 h-6 mb-1"
+                                                />
+                                                <img
+                                                    src="/logotipo.svg"
+                                                    alt="Reveal Logo"
+                                                    className="h-4"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

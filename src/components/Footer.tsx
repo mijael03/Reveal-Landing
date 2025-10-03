@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Button from './Button'
 
 const Footer = () => {
     const [isVisible, setIsVisible] = useState(false)
@@ -35,8 +34,8 @@ const Footer = () => {
             className="bg-black/70 py-16 px-8"
         >
             <div className="max-w-6xl mx-auto">
-                {/* Main Footer Content */}
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-8">
+                {/* Main Footer Content - Centrado */}
+                <div className="flex flex-col items-center gap-8 mb-8">
 
                     {/* Logo */}
                     <div className={`transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -88,19 +87,11 @@ const Footer = () => {
                             />
                         </a>
                     </div>
-
-                    {/* CTA Button */}
-                    <div className={`hidden lg:block transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`} style={{ transitionDelay: '600ms' }}>
-                        <Button>
-                            Empieza ahora
-                        </Button>
-                    </div>
                 </div>
 
                 {/* Copyright */}
                 <div className={`text-center transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`} style={{ transitionDelay: '1000ms' }}>
+                    }`} style={{ transitionDelay: '600ms' }}>
                     <p className="text-white/70 text-sm">
                         Copyright© 2024 - Todos los derechos reservados
                     </p>

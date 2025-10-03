@@ -90,7 +90,7 @@ const ProductShowcase = () => {
                     >
                         <div className="space-y-8">
                             <div>
-                                <p className={`text-white text-xl font-bold gap-4 mb-4 tracking-[0.15em] uppercase transition-all duration-600 ease-out ${contentVisible && activeSlide === 0
+                                <p className={`text-[#AAAAAA] text-xl font-bold gap-4 mb-4 tracking-[0.15em] uppercase transition-all duration-600 ease-out ${contentVisible && activeSlide === 0
                                     ? 'opacity-100 translate-y-0'
                                     : 'opacity-0 translate-y-4'
                                     }`} style={{ transitionDelay: '100ms' }}>
@@ -139,7 +139,7 @@ const ProductShowcase = () => {
                     >
                         <div className="space-y-8">
                             <div>
-                                <p className={`text-white text-xl font-bold mb-4 tracking-[0.15em] uppercase transition-all duration-600 ease-out ${contentVisible && activeSlide === 1
+                                <p className={`text-[#AAAAAA]  text-xl font-bold mb-4 tracking-[0.15em] uppercase transition-all duration-600 ease-out ${contentVisible && activeSlide === 1
                                     ? 'opacity-100 translate-y-0'
                                     : 'opacity-0 translate-y-4'
                                     }`} style={{ transitionDelay: '100ms' }}>
@@ -185,7 +185,7 @@ const ProductShowcase = () => {
                 <div className="md:hidden flex flex-col space-y-8">
                     {/* Contenido de texto arriba */}
                     <div className="text-center">
-                        <p className={`text-white text-lg font-bold mb-4 tracking-[0.15em] uppercase transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                        <p className={`text-[#AAAAAA] text-lg font-bold mb-4 tracking-[0.15em] uppercase transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                             }`}>
                             PRODUCTOS
                         </p>
@@ -201,9 +201,8 @@ const ProductShowcase = () => {
                         </p>
 
                         {/* Divider con gradiente */}
-                        <div className={`gradient-divider my-8 transition-all duration-500 ease-out ${
-                            contentVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-                        }`} style={{ transitionDelay: '300ms' }}></div>
+                        <div className={`gradient-divider my-8 transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+                            }`} style={{ transitionDelay: '300ms' }}></div>
 
                         {/* Features */}
                         <div className="space-y-4">
@@ -236,13 +235,30 @@ const ProductShowcase = () => {
                             </video>
                         </div>
                     </div>
+                    {/* Indicadores del slider para móvil */}
+                    <div className="flex justify-center gap-6 mt-6">
+                        {slides.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => handleSlideChange(index)}
+                                disabled={isAnimating}
+                                className="w-12 h-12 transition-all duration-300 hover:scale-110 disabled:cursor-not-allowed"
+                            >
+                                <img
+                                    src={activeSlide === index ? "/slider_active.svg" : "/slider_inactive.svg"}
+                                    alt={`Slide ${index + 1}`}
+                                    className="w-full h-full"
+                                />
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
 
             {/* Indicadores del slider */}
             <div
                 ref={indicatorsFade.elementRef as React.RefObject<HTMLDivElement>}
-                className={`absolute bottom-0 md:bottom-20 left-1/2 transform -translate-x-1/2 flex gap-6 z-30 ${indicatorsFade.animationClasses}`}
+                className={`hidden md:flex absolute bottom-0 md:bottom-20 left-1/2 transform -translate-x-1/2 gap-6 z-30 ${indicatorsFade.animationClasses}`}
                 style={indicatorsFade.style}
             >
                 {slides.map((_, index) => (

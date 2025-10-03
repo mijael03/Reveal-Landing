@@ -118,7 +118,7 @@ const Contact = () => {
                                                 value={formData.nombre}
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir nombre"
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                                 required
                                             />
                                         </div>
@@ -134,7 +134,7 @@ const Contact = () => {
                                                 value={formData.apellido}
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir apellido"
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                                 required
                                             />
                                         </div>
@@ -153,7 +153,7 @@ const Contact = () => {
                                                 value={formData.correo}
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir correo"
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                                 required
                                             />
                                         </div>
@@ -169,7 +169,7 @@ const Contact = () => {
                                                 value={formData.telefono}
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir número"
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                                 required
                                             />
                                         </div>
@@ -187,7 +187,7 @@ const Contact = () => {
                                             value={formData.empresa}
                                             onChange={handleInputChange}
                                             placeholder="Escribir nombre de la empresa"
-                                            className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                            className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                         />
                                     </div>
 
@@ -203,7 +203,7 @@ const Contact = () => {
                                             onChange={handleInputChange}
                                             placeholder="Escribir comentario adicional..."
                                             rows={4}
-                                            className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors resize-none"
+                                            className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors resize-none"
                                         />
                                     </div>
 
@@ -286,7 +286,7 @@ const Contact = () => {
                                                 value={formData.nombre}
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir nombre"
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                                 required
                                             />
                                         </div>
@@ -303,7 +303,7 @@ const Contact = () => {
                                                 value={formData.apellido}
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir apellido"
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                                 required
                                             />
                                         </div>
@@ -320,7 +320,7 @@ const Contact = () => {
                                                 value={formData.correo}
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir correo"
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                                 required
                                             />
                                         </div>
@@ -337,7 +337,7 @@ const Contact = () => {
                                                 value={formData.telefono}
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir número"
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                                 required
                                             />
                                         </div>
@@ -354,7 +354,7 @@ const Contact = () => {
                                                 value={formData.empresa}
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir nombre de la empresa"
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
                                             />
                                         </div>
 
@@ -370,7 +370,7 @@ const Contact = () => {
                                                 onChange={handleInputChange}
                                                 placeholder="Escribir comentario adicional..."
                                                 rows={4}
-                                                className="w-full px-4 py-3 border border-gray-600 rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors resize-none"
+                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors resize-none"
                                             />
                                         </div>
 
