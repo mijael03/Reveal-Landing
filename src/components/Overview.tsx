@@ -18,9 +18,13 @@ const Overview = () => {
     }, [])
 
     useEffect(() => {
+        let lastScrollY = 0
+
         const handleScroll = () => {
             const scrollY = window.scrollY
+            const navbarHeight = 72 // Altura aproximada del navbar sticky (py-5 + h-8 + padding)
             const triggerPoint = window.innerHeight * 0.5
+            const isScrollingDown = scrollY > lastScrollY
 
             // Para desktop
             if (window.innerWidth >= 768) {
@@ -30,16 +34,22 @@ const Overview = () => {
                     setIsScrolled(false)
                 }
             } else {
-                // Para móvil - detectar cuando llega a la sección "¿Por qué elegirnos?"
-                const mobileVideoHeight = window.innerHeight * 0.6 // 60vh
-                const mobileTriggerPoint = mobileVideoHeight * 0.7 // Cuando haya scrolleado 70% del video
+                // Para móvil - con histéresis para evitar oscilación
+                const mobileVideoHeight = window.innerHeight - navbarHeight
 
-                if (scrollY > mobileTriggerPoint) {
+                // Diferentes puntos de activación según la dirección del scroll
+                const contractTriggerPoint = mobileVideoHeight * 0.5// Para contraer (scroll down)
+                const expandTriggerPoint = mobileVideoHeight * 0.3 // Para expandir (scroll up)
+
+                if (isScrollingDown && scrollY > contractTriggerPoint) {
                     setIsMobileScrolled(true)
-                } else {
+                } else if (!isScrollingDown && scrollY < expandTriggerPoint) {
                     setIsMobileScrolled(false)
                 }
+                // Si está entre los dos puntos, mantiene el estado actual
             }
+
+            lastScrollY = scrollY
         }
 
         window.addEventListener('scroll', handleScroll)
@@ -165,8 +175,7 @@ const Overview = () => {
                 <div className={`w-full transition-all duration-1000 ease-in-out ${isMobileScrolled ? 'h-[25vh]' : 'h-screen'
                     }`}>
                     <video
-                        className={`w-full h-full transition-all duration-1000 ease-in-out ${isMobileScrolled ? 'object-contain' : 'object-cover'
-                            }`}
+                        className="w-full h-full object-cover transition-all duration-1000 ease-in-out"
                         autoPlay
                         loop
                         muted
@@ -178,7 +187,7 @@ const Overview = () => {
                 </div>
 
                 {/* Contenido "¿Por qué elegirnos?" en móvil */}
-                <div className={`bg-primary-bg px-8 py-12 transition-all duration-1000 ease-in-out ${isMobileScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                <div className={`bg-primary-bg px-8 py-12 transition-all duration-[1200ms] ease-out ${isMobileScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}>
                     <div className="text-center mb-8">
                         <div className="text-text-secondary text-lg font-bold mb-2 tracking-wider">
@@ -193,7 +202,7 @@ const Overview = () => {
                         {features.map((feature, index) => (
                             <div
                                 key={index}
-                                className={`rounded-lg p-[1px] transition-all duration-700 ease-out ${isMobileScrolled
+                                className={`rounded-lg p-[1px] transition-all duration-[800ms] ease-out ${isMobileScrolled
                                     ? `delay-${300 + (index * 150)} translate-y-0 opacity-100`
                                     : 'translate-y-8 opacity-0'
                                     }`}

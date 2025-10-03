@@ -6,11 +6,17 @@ const ProductShowcase = () => {
     const [activeSlide, setActiveSlide] = useState(0)
     const [isAnimating, setIsAnimating] = useState(false)
 
-    // Fade-up por scroll
+    // Fade-up por scroll - Desktop
     const videoFade = useFadeUp({ duration: 800, threshold: 0.2 })
     const lotesFade = useFadeUp({ delay: 150, duration: 600, threshold: 0.2 })
     const deptosFade = useFadeUp({ delay: 150, duration: 600, threshold: 0.2 })
     const indicatorsFade = useFadeUp({ delay: 250, duration: 600, threshold: 0.2 })
+
+    // Fade-up por scroll - Mobile
+    const mobileHeaderFade = useFadeUp({ duration: 600, threshold: 0.2 })
+    const mobileContentFade = useFadeUp({ delay: 100, duration: 600, threshold: 0.2 })
+    const mobileVideoFade = useFadeUp({ delay: 200, duration: 600, threshold: 0.2 })
+    const mobileIndicatorsFade = useFadeUp({ delay: 300, duration: 600, threshold: 0.2 })
 
     const [contentVisible, setContentVisible] = useState(true)
 
@@ -182,14 +188,25 @@ const ProductShowcase = () => {
                 </div>
 
                 {/* Layout Mobile - Nuevo layout vertical */}
-                <div className="md:hidden flex flex-col space-y-8">
-                    {/* Contenido de texto arriba */}
-                    <div className="text-center">
-                        <p className={`text-[#AAAAAA] text-lg font-bold mb-4 tracking-[0.15em] uppercase transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                <div className="md:hidden flex flex-col">
+                    {/* Header móvil con scroll reveal */}
+                    <div
+                        ref={mobileHeaderFade.elementRef as React.RefObject<HTMLDivElement>}
+                        className={`text-center ${mobileHeaderFade.animationClasses}`}
+                        style={mobileHeaderFade.style}
+                    >
+                        <p className={`text-[#AAAAAA] text-lg font-bold mb-2 tracking-[0.15em] uppercase transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                             }`}>
                             PRODUCTOS
                         </p>
+                    </div>
 
+                    {/* Contenido de texto con scroll reveal */}
+                    <div
+                        ref={mobileContentFade.elementRef as React.RefObject<HTMLDivElement>}
+                        className={`text-center  mb-4 ${mobileContentFade.animationClasses}`}
+                        style={mobileContentFade.style}
+                    >
                         <h2 className={`text-3xl font-bold text-text-primary mb-6 leading-tight transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                             }`} style={{ transitionDelay: '100ms' }}>
                             {slides[activeSlide].title}
@@ -218,8 +235,12 @@ const ProductShowcase = () => {
                         </div>
                     </div>
 
-                    {/* Video abajo */}
-                    <div className="flex justify-center">
+                    {/* Video con scroll reveal */}
+                    <div
+                        ref={mobileVideoFade.elementRef as React.RefObject<HTMLDivElement>}
+                        className={`flex justify-center ${mobileVideoFade.animationClasses}`}
+                        style={mobileVideoFade.style}
+                    >
                         <div className={`w-full h-[300px] rounded-[15px] border border-gray-400 overflow-hidden shadow-2xl transition-all duration-500 ease-out ${contentVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                             }`} style={{ transitionDelay: '600ms' }}>
                             <video
@@ -235,8 +256,13 @@ const ProductShowcase = () => {
                             </video>
                         </div>
                     </div>
-                    {/* Indicadores del slider para móvil */}
-                    <div className="flex justify-center gap-6 mt-6">
+
+                    {/* Indicadores del slider para móvil con scroll reveal */}
+                    <div
+                        ref={mobileIndicatorsFade.elementRef as React.RefObject<HTMLDivElement>}
+                        className={`flex justify-center gap-6 mt-6 ${mobileIndicatorsFade.animationClasses}`}
+                        style={mobileIndicatorsFade.style}
+                    >
                         {slides.map((_, index) => (
                             <button
                                 key={index}

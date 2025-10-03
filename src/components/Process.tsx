@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
 import Button from './Button'
 import { useModal } from '../contexts/ModalContext'
+import { useFadeUp } from '../hooks/useFadeUp'
 
 const Process = () => {
-    const [isVisible, setIsVisible] = useState(false)
     const [openStep, setOpenStep] = useState<number | null>(null)
     const { openDemoModal } = useModal()
+
+    // Animaciones scroll reveal para desktop - Restaurar el intersection observer original
+    const [isVisible, setIsVisible] = useState(false)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -14,10 +17,7 @@ const Process = () => {
                     setIsVisible(true)
                 }
             },
-            {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            }
+            { threshold: 0.2 }
         )
 
         const section = document.getElementById('process-section')
@@ -32,8 +32,15 @@ const Process = () => {
         }
     }, [])
 
-    const toggleStep = (stepIndex: number) => {
-        setOpenStep(openStep === stepIndex ? null : stepIndex)
+    // Animaciones scroll reveal para mobile
+    const mobileHeaderFade = useFadeUp({ duration: 600, threshold: 0.2 })
+    const mobileStep1Fade = useFadeUp({ delay: 100, duration: 600, threshold: 0.2 })
+    const mobileStep2Fade = useFadeUp({ delay: 200, duration: 600, threshold: 0.2 })
+    const mobileStep3Fade = useFadeUp({ delay: 300, duration: 600, threshold: 0.2 })
+    const mobileButtonFade = useFadeUp({ delay: 400, duration: 600, threshold: 0.2 })
+
+    const toggleStep = (step: number) => {
+        setOpenStep(openStep === step ? null : step)
     }
 
     const step1Icons = [
@@ -54,26 +61,28 @@ const Process = () => {
     ]
 
     return (
-        <section id="process-section" className="min-h-screen bg-primary-bg py-16 flex items-center justify-center">
-            <div className="max-w-6xl mx-auto px-8">
-                {/* Header */}
-                <div className={`text-center mb-16 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}>
-                    <p className={`text-text-secondary text-lg font-bold tracking-[0.15em] transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`} style={{ transitionDelay: '200ms' }}>
-                        ¿CÓMO LO HACEMOS?
+        <section id="process-section" className="min-h-[90vh] md:min-h-screen bg-primary-bg py-20 px-8">
+            <div className="max-w-7xl mx-auto">
+                {/* Header - Solo animación en mobile */}
+                <div className={`text-center mb-16 lg:mb-20 transition-all duration-800 ease-out lg:${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} md:${mobileHeaderFade.animationClasses}`}
+                    ref={mobileHeaderFade.elementRef as React.RefObject<HTMLDivElement>}
+                    style={{
+                        ...mobileHeaderFade.style,
+                        ...(window.innerWidth >= 1024 ? { transitionDelay: '200ms' } : {})
+                    }}
+                >
+                    <p className="text-[#AAAAAA] text-xl font-bold mb-4 tracking-[0.15em] uppercase">
+                        PROCESO
                     </p>
-                    <h2 className={`text-4xl md:text-5xl font-bold text-text-primary mb-8 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`} style={{ transitionDelay: '400ms' }}>
-                        De planos a experiencias interactivas
+                    <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-8 leading-tight">
+                        Cómo funciona
                     </h2>
-                    <p className={`text-text-secondary text-lg max-w-4xl mx-auto leading-relaxed transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`} style={{ transitionDelay: '600ms' }}>
-                        Desarrollamos visores inmersivos que permiten explorar cada detalle de manera simple y atractiva.
+                    <p className="text-white text-lg leading-relaxed max-w-2xl mx-auto">
+                        Transformamos tus planos en experiencias inmersivas en 3 simples pasos.
                     </p>
                 </div>
 
-                {/* Desktop Layout */}
+                {/* Desktop Layout - Restaurar animaciones originales */}
                 <div className="hidden lg:block">
                     <div className="flex flex-col lg:flex-row items-start justify-center gap-20 mb-16">
                         {/* Left Steps */}
@@ -176,11 +185,15 @@ const Process = () => {
                     </div>
                 </div>
 
-                {/* Mobile Layout - Accordion Style */}
+                {/* Mobile Layout - Acordeón con animaciones scroll reveal */}
                 <div className="block lg:hidden mb-16">
                     <div className="space-y-4">
-                        {/* PASO 1 */}
-                        <div className="border-b border-gray-600">
+                        {/* PASO 1 con scroll reveal */}
+                        <div
+                            ref={mobileStep1Fade.elementRef as React.RefObject<HTMLDivElement>}
+                            className={`border-b border-gray-600 ${mobileStep1Fade.animationClasses}`}
+                            style={mobileStep1Fade.style}
+                        >
                             <button
                                 onClick={() => toggleStep(0)}
                                 className="w-full py-4 flex items-center justify-between text-left focus:outline-none"
@@ -241,8 +254,12 @@ const Process = () => {
                             </div>
                         </div>
 
-                        {/* PASO 2 */}
-                        <div className="border-b border-gray-600">
+                        {/* PASO 2 con scroll reveal */}
+                        <div
+                            ref={mobileStep2Fade.elementRef as React.RefObject<HTMLDivElement>}
+                            className={`border-b border-gray-600 ${mobileStep2Fade.animationClasses}`}
+                            style={mobileStep2Fade.style}
+                        >
                             <button
                                 onClick={() => toggleStep(1)}
                                 className="w-full py-4 flex items-center justify-between text-left focus:outline-none"
@@ -290,8 +307,12 @@ const Process = () => {
                             </div>
                         </div>
 
-                        {/* PASO 3 */}
-                        <div className="border-b border-gray-600">
+                        {/* PASO 3 con scroll reveal */}
+                        <div
+                            ref={mobileStep3Fade.elementRef as React.RefObject<HTMLDivElement>}
+                            className={`border-b border-gray-600 ${mobileStep3Fade.animationClasses}`}
+                            style={mobileStep3Fade.style}
+                        >
                             <button
                                 onClick={() => toggleStep(2)}
                                 className="w-full py-4 flex items-center justify-between text-left focus:outline-none"
@@ -344,9 +365,15 @@ const Process = () => {
                     </div>
                 </div>
 
-                {/* CTA Button */}
-                <div className={`text-center transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`} style={{ transitionDelay: '1800ms' }}>
+                {/* CTA Button con scroll reveal */}
+                <div
+                    ref={mobileButtonFade.elementRef as React.RefObject<HTMLDivElement>}
+                    className={`text-center transition-all duration-800 ease-out lg:${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} md:${mobileButtonFade.animationClasses}`}
+                    style={{
+                        ...mobileButtonFade.style,
+                        ...(window.innerWidth >= 1024 ? { transitionDelay: '1800ms' } : {})
+                    }}
+                >
                     <Button onClick={openDemoModal}>
                         Solicita una demo
                     </Button>
