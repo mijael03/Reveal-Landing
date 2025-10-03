@@ -17,23 +17,26 @@ function AppContent() {
       {/* NavBar */}
       <NavBar />
 
-      {/* Overview Section - incluye video y features */}
-      <Overview />
+      {/* Main Content - Con padding-top para compensar el navbar fijo */}
+      <main className="pt-20">
+        {/* Overview Section - incluye video y features */}
+        <Overview />
 
-      {/* Process Section */}
-      <Process />
+        {/* Process Section */}
+        <Process />
 
-      {/* Product Showcase Section */}
-      <ProductShowcase />
+        {/* Product Showcase Section */}
+        <ProductShowcase />
 
-      {/* Contact Section */}
-      <Contact />
+        {/* Contact Section */}
+        <Contact />
 
-      {/* Partnership Section */}
-      <Partnership />
+        {/* Partnership Section */}
+        <Partnership />
 
-      {/* Footer Section */}
-      <Footer />
+        {/* Footer Section */}
+        <Footer />
+      </main>
 
       {/* WhatsApp Button - Fixed Position */}
       <WhatsAppButton />

@@ -21,7 +21,14 @@ const NavBar = () => {
   return (
     <>
       {/* NavBar - Se oculta cuando el menú móvil está abierto */}
-      <nav className={`bg-primary-navbar text-text-primary py-5 px-8 relative z-50 ${isMenuOpen ? 'hidden' : 'block'}`}>
+      {/* NavBar - Sticky con backdrop blur */}
+      <nav className={`
+        fixed top-0 left-0 right-0 z-50 
+        bg-primary-navbar/90 backdrop-blur-md 
+        text-text-primary py-5 px-8 
+        transition-all duration-300
+        ${isMenuOpen ? 'hidden' : 'block'}
+      `}>
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo - Desktop */}
           <div className="hidden md:flex items-center">
