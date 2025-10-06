@@ -1,32 +1,24 @@
-import { useState, useEffect } from 'react'
+import { useFadeUp } from '../hooks/useFadeUp'
 
 const Footer = () => {
-    const [isVisible, setIsVisible] = useState(false)
+    // ✅ Reemplazamos todo el useEffect manual con hooks optimizados
+    const logoFade = useFadeUp({
+        delay: 200,
+        duration: 800,
+        threshold: 0.1,
+    })
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true)
-                }
-            },
-            {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            }
-        )
+    const socialFade = useFadeUp({
+        delay: 400,
+        duration: 800,
+        threshold: 0.1,
+    })
 
-        const section = document.getElementById('footer-section')
-        if (section) {
-            observer.observe(section)
-        }
-
-        return () => {
-            if (section) {
-                observer.unobserve(section)
-            }
-        }
-    }, [])
+    const copyrightFade = useFadeUp({
+        delay: 600,
+        duration: 800,
+        threshold: 0.1,
+    })
 
     return (
         <footer
@@ -38,8 +30,11 @@ const Footer = () => {
                 <div className="flex flex-col items-center gap-8 mb-8">
 
                     {/* Logo */}
-                    <div className={`transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`} style={{ transitionDelay: '200ms' }}>
+                    <div
+                        ref={logoFade.elementRef as React.RefObject<HTMLDivElement>}
+                        className={logoFade.animationClasses}
+                        style={logoFade.style}
+                    >
                         <img
                             src="/reveal_yellow.png"
                             alt="Reveal"
@@ -48,8 +43,11 @@ const Footer = () => {
                     </div>
 
                     {/* Social Media Icons */}
-                    <div className={`flex items-center gap-6 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`} style={{ transitionDelay: '400ms' }}>
+                    <div
+                        ref={socialFade.elementRef as React.RefObject<HTMLDivElement>}
+                        className={`flex items-center gap-6 ${socialFade.animationClasses}`}
+                        style={socialFade.style}
+                    >
 
                         <a
                             href="#"
@@ -90,8 +88,11 @@ const Footer = () => {
                 </div>
 
                 {/* Copyright */}
-                <div className={`text-center transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`} style={{ transitionDelay: '600ms' }}>
+                <div
+                    ref={copyrightFade.elementRef as React.RefObject<HTMLDivElement>}
+                    className={`text-center ${copyrightFade.animationClasses}`}
+                    style={copyrightFade.style}
+                >
                     <p className="text-white/70 text-sm">
                         Copyright© 2024 - Todos los derechos reservados
                     </p>

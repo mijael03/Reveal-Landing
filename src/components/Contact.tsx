@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Button from './Button'
+import { useFadeUp } from '../hooks/useFadeUp'
 
 const Contact = () => {
-    const [isVisible, setIsVisible] = useState(false)
     const [formData, setFormData] = useState({
         nombre: '',
         apellido: '',
@@ -11,32 +11,40 @@ const Contact = () => {
         empresa: '',
         comentario: ''
     })
+    // ✅ Múltiples animaciones con diferentes delays
+    const containerFade = useFadeUp({
+        threshold: 0.1,
+        duration: 800
+    })
+    const titleFade = useFadeUp({
+        delay: 200,
+        duration: 700,
+        threshold: 0.1,
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true)
-                }
-            },
-            {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            }
-        )
+    })
+    const descriptionFade = useFadeUp({
+        delay: 400,
+        duration: 700,
+        threshold: 0.1,
 
-        const section = document.getElementById('contact-section')
-        if (section) {
-            observer.observe(section)
-        }
+    })
+    const dividerFade = useFadeUp({
+        delay: 600,
+        duration: 700,
+        threshold: 0.1,
 
-        return () => {
-            if (section) {
-                observer.unobserve(section)
-            }
-        }
-    }, [])
+    })
+    const contactInfoFade = useFadeUp({
+        delay: 800,
+        duration: 700,
+        threshold: 0.1,
 
+    })
+    const formFade = useFadeUp({
+        delay: 400,
+        duration: 800,
+        threshold: 0.1
+    })
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target
         setFormData(prev => ({
@@ -52,31 +60,50 @@ const Contact = () => {
     }
 
     return (
-        <section id="contact-section" className=" bg-primary-bg pt-16 pb-8 px-8">
+        <section id="contact-section" className="bg-primary-bg pt-16 pb-8 px-8">
             <div className="max-w-7xl mx-auto">
                 {/* Desktop Layout */}
                 <div className="hidden lg:flex flex-row gap-16 items-start">
                     {/* Left Side - Contact Info (1/3) */}
-                    <div className={`lg:w-1/3 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`}>
-                        <h2 className={`text-4xl md:text-5xl font-bold text-text-primary mb-6 text-left transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                            }`} style={{ transitionDelay: '200ms' }}>
+                    <div
+                        ref={containerFade.elementRef as React.RefObject<HTMLDivElement>}
+                        className={`lg:w-1/3 ${containerFade.animationClasses}`}
+                        style={containerFade.style}
+                    >
+                        <h2
+                            ref={titleFade.elementRef as React.RefObject<HTMLHeadingElement>}
+                            className={`text-4xl md:text-5xl font-bold text-text-primary mb-6 text-left ${titleFade.animationClasses}`}
+                            style={titleFade.style}
+                        >
                             Lleva tu proyecto<br />
                             al siguiente nivel
                         </h2>
 
-                        <p className={`text-text-secondary text-lg mb-8 leading-relaxed text-left transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                            }`} style={{ transitionDelay: '400ms' }}>
+                        <p
+                            ref={descriptionFade.elementRef as React.RefObject<HTMLParagraphElement>}
+                            className={`text-text-secondary text-lg mb-8 leading-relaxed text-left ${descriptionFade.animationClasses}`}
+                            style={descriptionFade.style}
+                        >
                             Completa el formulario y nos contactaremos contigo.
                         </p>
 
                         {/* Gradient Divider */}
-                        <div className={`gradient-divider my-8 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-                            }`} style={{ transitionDelay: '600ms', transformOrigin: 'left' }}></div>
+                        <div
+                            ref={dividerFade.elementRef as React.RefObject<HTMLDivElement>}
+                            className={`gradient-divider my-8 ${dividerFade.animationClasses}`}
+                            style={{
+                                ...dividerFade.style,
+                                transformOrigin: 'left',
+                                transform: dividerFade.isAnimated ? 'scaleX(1)' : 'scaleX(0)'
+                            }}
+                        />
 
                         {/* Contact Information */}
-                        <div className={`space-y-4 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                            }`} style={{ transitionDelay: '800ms' }}>
+                        <div
+                            ref={contactInfoFade.elementRef as React.RefObject<HTMLDivElement>}
+                            className={`space-y-4 ${contactInfoFade.animationClasses}`}
+                            style={contactInfoFade.style}
+                        >
                             <div className="flex items-center gap-3 justify-start">
                                 <img
                                     src="/phone.svg"
@@ -97,8 +124,11 @@ const Contact = () => {
                     </div>
 
                     {/* Right Side - Contact Form (2/3) */}
-                    <div className={`lg:w-2/3 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`} style={{ transitionDelay: '400ms' }}>
+                    <div
+                        ref={formFade.elementRef as React.RefObject<HTMLDivElement>}
+                        className={`lg:w-2/3 ${formFade.animationClasses}`}
+                        style={formFade.style}
+                    >
 
                         {/* Form Container with Gradient Border */}
                         <div>
@@ -107,8 +137,7 @@ const Contact = () => {
 
                                     {/* First Row - Name and Last Name */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '600ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Nombre
                                             </label>
@@ -123,8 +152,7 @@ const Contact = () => {
                                             />
                                         </div>
 
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '700ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Apellido
                                             </label>
@@ -142,8 +170,7 @@ const Contact = () => {
 
                                     {/* Second Row - Email and Phone */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '800ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Correo electrónico
                                             </label>
@@ -158,8 +185,7 @@ const Contact = () => {
                                             />
                                         </div>
 
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '900ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Número telefónico
                                             </label>
@@ -176,8 +202,7 @@ const Contact = () => {
                                     </div>
 
                                     {/* Third Row - Company Name */}
-                                    <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                        }`} style={{ transitionDelay: '1000ms' }}>
+                                    <div>
                                         <label className="block text-text-secondary text-sm font-medium mb-2">
                                             Nombre de la empresa
                                         </label>
@@ -192,8 +217,7 @@ const Contact = () => {
                                     </div>
 
                                     {/* Fourth Row - Additional Comments */}
-                                    <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                        }`} style={{ transitionDelay: '1100ms' }}>
+                                    <div>
                                         <label className="block text-text-secondary text-sm font-medium mb-2">
                                             Comentario adicional
                                         </label>
@@ -208,8 +232,7 @@ const Contact = () => {
                                     </div>
 
                                     {/* Submit Button */}
-                                    <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                        }`} style={{ transitionDelay: '1200ms' }}>
+                                    <div>
                                         <Button className="w-full">
                                             Enviar
                                         </Button>
@@ -224,26 +247,21 @@ const Contact = () => {
                 <div className="lg:hidden">
                     <div className="flex flex-col items-center text-center">
                         {/* Header Content */}
-                        <div className={`transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                            }`}>
-                            <h2 className={`text-4xl md:text-5xl font-bold text-text-primary mb-6 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                }`} style={{ transitionDelay: '200ms' }}>
+                        <div>
+                            <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
                                 Lleva tu proyecto<br />
                                 al siguiente nivel
                             </h2>
 
-                            <p className={`text-text-secondary text-lg mb-8 leading-relaxed transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                }`} style={{ transitionDelay: '400ms' }}>
+                            <p className="text-text-secondary text-lg mb-8 leading-relaxed">
                                 Completa el formulario y nos contactaremos contigo.
                             </p>
 
                             {/* Gradient Divider */}
-                            <div className={`gradient-divider my-8 mx-auto transition-all duration-700 ease-out ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-                                }`} style={{ transitionDelay: '600ms', transformOrigin: 'center' }}></div>
+                            <div className="gradient-divider my-8 mx-auto" style={{ transformOrigin: 'center' }}></div>
 
                             {/* Contact Information */}
-                            <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                }`} style={{ transitionDelay: '800ms' }}>
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                                 <div className="flex items-center gap-3">
                                     <img
                                         src="/phone.svg"
@@ -266,8 +284,7 @@ const Contact = () => {
 
                     {/* Contact Form - Centered and Narrower for Mobile */}
                     <div className="max-w-md mx-auto">
-                        <div className={`transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                            }`} style={{ transitionDelay: '400ms' }}>
+                        <div>
 
                             {/* Form Container */}
                             <div>
@@ -275,8 +292,7 @@ const Contact = () => {
                                     <form onSubmit={handleSubmit} className="space-y-6">
 
                                         {/* Name */}
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '600ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Nombre
                                             </label>
@@ -292,8 +308,7 @@ const Contact = () => {
                                         </div>
 
                                         {/* Last Name */}
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '700ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Apellido
                                             </label>
@@ -309,8 +324,7 @@ const Contact = () => {
                                         </div>
 
                                         {/* Email */}
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '800ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Correo electrónico
                                             </label>
@@ -326,8 +340,7 @@ const Contact = () => {
                                         </div>
 
                                         {/* Phone */}
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '900ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Número telefónico
                                             </label>
@@ -343,8 +356,7 @@ const Contact = () => {
                                         </div>
 
                                         {/* Company Name */}
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '1000ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Nombre de la empresa
                                             </label>
@@ -359,8 +371,7 @@ const Contact = () => {
                                         </div>
 
                                         {/* Additional Comments */}
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '1100ms' }}>
+                                        <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Comentario adicional
                                             </label>
@@ -375,8 +386,7 @@ const Contact = () => {
                                         </div>
 
                                         {/* Submit Button */}
-                                        <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                                            }`} style={{ transitionDelay: '1200ms' }}>
+                                        <div>
                                             <Button className="w-full">
                                                 Enviar
                                             </Button>

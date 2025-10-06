@@ -102,7 +102,7 @@ const Overview = () => {
             </div>
 
             {/* Layout Desktop - con animaciones de scroll */}
-            <div id="overview-section" className="hidden md:block sticky top-0 w-full h-screen">
+            <div id="overview-section" className="hidden md:block sticky top-10 w-full h-screen">
                 <div className="flex w-full h-full">
                     <div
                         className={`transition-all duration-1000 ease-in-out bg-primary-bg flex flex-col justify-center items-center ${isScrolled ? 'opacity-100 scale-100 w-1/2' : 'opacity-0 scale-95 w-0'
@@ -113,7 +113,7 @@ const Overview = () => {
                                 ¿POR QUÉ ELEGIRNOS?
                             </div>
 
-                            <h2 className={`text-4xl font-bold text-text-primary mb-12 transition-all duration-700 ${isScrolled ? 'delay-500 translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                            <h2 className={`text-4xl font-bold text-text-primary mb-5 transition-all duration-700 ${isScrolled ? 'delay-500 translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                                 }`}>
                                 Más allá de lo tradicional
                             </h2>

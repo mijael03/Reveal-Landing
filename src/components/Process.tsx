@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Button from './Button'
 import { useModal } from '../contexts/ModalContext'
 import { useFadeUp } from '../hooks/useFadeUp'
@@ -7,37 +7,62 @@ const Process = () => {
     const [openStep, setOpenStep] = useState<number | null>(null)
     const { openDemoModal } = useModal()
 
-    // Animaciones scroll reveal para desktop - Restaurar el intersection observer original
-    const [isVisible, setIsVisible] = useState(false)
+    // ✅ Animaciones scroll reveal para desktop - Duraciones optimizadas (más rápidas)
+    const desktopHeaderFade = useFadeUp({
+        delay: 100,
+        duration: 500,
+        threshold: 0.2
+    })
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true)
-                }
-            },
-            { threshold: 0.2 }
-        )
+    const desktopLeftStepsFade = useFadeUp({
+        delay: 300,
+        duration: 500,
+        threshold: 0.2
+    })
 
-        const section = document.getElementById('process-section')
-        if (section) {
-            observer.observe(section)
-        }
+    const desktopCenterFade = useFadeUp({
+        delay: 500,
+        duration: 500,
+        threshold: 0.2
+    })
 
-        return () => {
-            if (section) {
-                observer.unobserve(section)
-            }
-        }
-    }, [])
+    const desktopRightFeaturesFade = useFadeUp({
+        delay: 700,
+        duration: 500,
+        threshold: 0.2
+    })
 
-    // Animaciones scroll reveal para mobile
-    const mobileHeaderFade = useFadeUp({ duration: 600, threshold: 0.2 })
-    const mobileStep1Fade = useFadeUp({ delay: 100, duration: 600, threshold: 0.2 })
-    const mobileStep2Fade = useFadeUp({ delay: 200, duration: 600, threshold: 0.2 })
-    const mobileStep3Fade = useFadeUp({ delay: 300, duration: 600, threshold: 0.2 })
-    const mobileButtonFade = useFadeUp({ delay: 400, duration: 600, threshold: 0.2 })
+    const desktopButtonFade = useFadeUp({
+        delay: 900,
+        duration: 400,
+        threshold: 0.2
+    })
+
+    // Animaciones scroll reveal para mobile - También optimizadas
+    const mobileHeaderFade = useFadeUp({
+        duration: 400,
+        threshold: 0.2
+    })
+    const mobileStep1Fade = useFadeUp({
+        delay: 50,
+        duration: 400,
+        threshold: 0.2
+    })
+    const mobileStep2Fade = useFadeUp({
+        delay: 100,
+        duration: 400,
+        threshold: 0.2
+    })
+    const mobileStep3Fade = useFadeUp({
+        delay: 150,
+        duration: 400,
+        threshold: 0.2
+    })
+    const mobileButtonFade = useFadeUp({
+        delay: 200,
+        duration: 400,
+        threshold: 0.2
+    })
 
     const toggleStep = (step: number) => {
         setOpenStep(openStep === step ? null : step)
@@ -63,12 +88,13 @@ const Process = () => {
     return (
         <section id="process-section" className="min-h-[90vh] md:min-h-screen bg-primary-bg py-20 px-8">
             <div className="max-w-7xl mx-auto">
-                {/* Header - Solo animación en mobile */}
-                <div className={`text-center mb-16 lg:mb-20 transition-all duration-800 ease-out lg:${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} md:${mobileHeaderFade.animationClasses}`}
-                    ref={mobileHeaderFade.elementRef as React.RefObject<HTMLDivElement>}
+                {/* Header - Optimizado para desktop y mobile */}
+                <div
+                    ref={desktopHeaderFade.elementRef as React.RefObject<HTMLDivElement>}
+                    className={`text-center mb-16 lg:mb-20 lg:${desktopHeaderFade.animationClasses} md:${mobileHeaderFade.animationClasses}`}
                     style={{
-                        ...mobileHeaderFade.style,
-                        ...(window.innerWidth >= 1024 ? { transitionDelay: '200ms' } : {})
+                        ...desktopHeaderFade.style,
+                        ...(window.innerWidth < 1024 ? mobileHeaderFade.style : {})
                     }}
                 >
                     <p className="text-[#AAAAAA] text-xl font-bold mb-4 tracking-[0.15em] uppercase">
@@ -82,12 +108,21 @@ const Process = () => {
                     </p>
                 </div>
 
-                {/* Desktop Layout - Restaurar animaciones originales */}
+                {/* Desktop Layout - Completamente optimizado */}
                 <div className="hidden lg:block">
                     <div className="flex flex-col lg:flex-row items-start justify-center gap-20 mb-16">
                         {/* Left Steps */}
-                        <div className={`flex flex-col transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                            }`} style={{ transitionDelay: '800ms' }}>
+                        <div
+                            ref={desktopLeftStepsFade.elementRef as React.RefObject<HTMLDivElement>}
+                            className={`flex flex-col ${desktopLeftStepsFade.animationClasses}`}
+                            style={{
+                                ...desktopLeftStepsFade.style,
+                                // Mantener el efecto translate-y-12 original
+                                transform: desktopLeftStepsFade.isAnimated
+                                    ? 'translateY(0)'
+                                    : 'translateY(48px)'
+                            }}
+                        >
                             {/* PASO 1 */}
                             <div className="w-64 p-4 flex flex-col justify-center">
                                 <div className="text-text-secondary text-xs font-bold tracking-[0.15em] mb-1">
@@ -101,11 +136,19 @@ const Process = () => {
                                 </p>
                             </div>
 
-                            {/* Iconos de archivos */}
+                            {/* Iconos de archivos - Delays más rápidos */}
                             <div className="flex flex-col gap-5 ml-4">
                                 {step1Icons.map((item, index) => (
-                                    <div key={index} className={`flex items-center gap-5 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-                                        }`} style={{ transitionDelay: `${1000 + (index * 150)}ms` }}>
+                                    <div
+                                        key={index}
+                                        className={`flex items-center gap-5 transition-all duration-400 ease-out ${desktopLeftStepsFade.isAnimated
+                                                ? 'opacity-100 translate-x-0'
+                                                : 'opacity-0 -translate-x-8'
+                                            }`}
+                                        style={{
+                                            transitionDelay: `${400 + (index * 100)}ms` // ⚡ Reducido de 1000ms + 150ms a 400ms + 100ms
+                                        }}
+                                    >
                                         <div className="w-24 h-24 bg-neutral-500 rounded-2xl flex justify-center items-center hover:scale-105 transition-transform duration-300">
                                             <img
                                                 src={item.icon}
@@ -120,8 +163,17 @@ const Process = () => {
                         </div>
 
                         {/* Center - Reveal Logo */}
-                        <div className={`flex flex-col items-center my-14 transition-all duration-800 ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-                            }`} style={{ transitionDelay: '1200ms' }}>
+                        <div
+                            ref={desktopCenterFade.elementRef as React.RefObject<HTMLDivElement>}
+                            className={`flex flex-col items-center my-14 ${desktopCenterFade.animationClasses}`}
+                            style={{
+                                ...desktopCenterFade.style,
+                                // Mantener el efecto scale original
+                                transform: desktopCenterFade.isAnimated
+                                    ? 'translateY(0) scale(1)'
+                                    : 'translateY(8px) scale(0.9)'
+                            }}
+                        >
                             {/* Contenedor con borde gradiente */}
                             <div className="rounded-lg p-[1px] mb-12 hover:scale-105 transition-transform duration-300 bg-gradient-green-yellow">
                                 <div className="w-44 h-44 bg-neutral-500 rounded-lg flex items-center justify-center">
@@ -153,8 +205,17 @@ const Process = () => {
                         </div>
 
                         {/* Right Features */}
-                        <div className={`flex flex-col transition-all duration-800 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                            }`} style={{ transitionDelay: '1400ms' }}>
+                        <div
+                            ref={desktopRightFeaturesFade.elementRef as React.RefObject<HTMLDivElement>}
+                            className={`flex flex-col ${desktopRightFeaturesFade.animationClasses}`}
+                            style={{
+                                ...desktopRightFeaturesFade.style,
+                                // Mantener el efecto translate-y-12 original
+                                transform: desktopRightFeaturesFade.isAnimated
+                                    ? 'translateY(0)'
+                                    : 'translateY(48px)'
+                            }}
+                        >
                             <div className="w-64 p-4 flex flex-col justify-center mb-8">
                                 <div className="text-text-secondary text-xs tracking-[0.15em] font-bold mb-1">
                                     PASO 3
@@ -168,8 +229,16 @@ const Process = () => {
                             </div>
                             <div className='flex flex-col ml-4'>
                                 {features.map((feature, index) => (
-                                    <div key={index} className={`flex items-center gap-5 mb-5 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                                        }`} style={{ transitionDelay: `${1600 + (index * 150)}ms` }}>
+                                    <div
+                                        key={index}
+                                        className={`flex items-center gap-5 mb-5 transition-all duration-400 ease-out ${desktopRightFeaturesFade.isAnimated
+                                                ? 'opacity-100 translate-x-0'
+                                                : 'opacity-0 translate-x-8'
+                                            }`}
+                                        style={{
+                                            transitionDelay: `${800 + (index * 100)}ms` // ⚡ Reducido de 1600ms + 150ms a 800ms + 100ms
+                                        }}
+                                    >
                                         <div className="w-24 h-24 bg-neutral-500 rounded-2xl flex justify-center items-center hover:scale-105 transition-transform duration-300">
                                             <img
                                                 src={feature.icon}
@@ -185,7 +254,7 @@ const Process = () => {
                     </div>
                 </div>
 
-                {/* Mobile Layout - Acordeón con animaciones scroll reveal */}
+                {/* Mobile Layout - Acordeón con animaciones scroll reveal (ya optimizado) */}
                 <div className="block lg:hidden mb-16">
                     <div className="space-y-4">
                         {/* PASO 1 con scroll reveal */}
@@ -365,13 +434,13 @@ const Process = () => {
                     </div>
                 </div>
 
-                {/* CTA Button con scroll reveal */}
+                {/* CTA Button - Optimizado para desktop y mobile */}
                 <div
-                    ref={mobileButtonFade.elementRef as React.RefObject<HTMLDivElement>}
-                    className={`text-center transition-all duration-800 ease-out lg:${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} md:${mobileButtonFade.animationClasses}`}
+                    ref={desktopButtonFade.elementRef as React.RefObject<HTMLDivElement>}
+                    className={`text-center lg:${desktopButtonFade.animationClasses} md:${mobileButtonFade.animationClasses}`}
                     style={{
-                        ...mobileButtonFade.style,
-                        ...(window.innerWidth >= 1024 ? { transitionDelay: '1800ms' } : {})
+                        ...desktopButtonFade.style,
+                        ...(window.innerWidth < 1024 ? mobileButtonFade.style : {})
                     }}
                 >
                     <Button onClick={openDemoModal}>
