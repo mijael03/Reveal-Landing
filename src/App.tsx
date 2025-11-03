@@ -31,9 +31,6 @@ function AppContent() {
         {/* Contact Section */}
         <Contact />
 
-        {/* Partnership Section */}
-        <Partnership />
-
         {/* Footer Section */}
         <Footer />
       </main>
