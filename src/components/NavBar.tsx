@@ -43,16 +43,16 @@ const NavBar = () => {
           {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center space-x-14">
             <a href="#overview-section" onClick={(e) => handleNavClick(e, 'overview-section')} className="text-text-primary font-bold text-xl">
-              ¿Por qué elegirnos?
+              Nosotros
             </a>
             <a href="#process-section" onClick={(e) => handleNavClick(e, 'process-section')} className="text-text-primary font-bold text-xl">
-              ¿Cómo lo hacemos?
+              Proceso
             </a>
             <a href="#products-section" onClick={(e) => handleNavClick(e, 'products-section')} className="text-text-primary font-bold text-xl">
               Productos
             </a>
-            <a href="#contact-section" onClick={(e) => handleNavClick(e, 'contact-section')} className="text-text-primary border border-text-primary px-10 py-2 rounded-lg">
-              Contacto
+            <a href="#contact-section" onClick={(e) => handleNavClick(e, 'contact-section')} className="text-text-primary rounded-lg p-[1px] bg-gradient-border">
+              <span className="block w-full h-full rounded-lg bg-primary-navbar px-10 py-2 text-center">Contacto</span>
             </a>
           </div>
 

@@ -27,6 +27,7 @@ export default {
             },
             backgroundImage: {
                 'gradient-green-yellow': 'linear-gradient(90deg, #1DB779 0%, #F6E049 100%)',
+                'gradient-border': 'linear-gradient(2.53deg, rgba(255, 255, 255, 0.08) -3.17%, rgba(255, 255, 255, 0.8) 52.21%, rgba(255, 255, 255, 0.08) 119.97%)',
             }
         },
     },

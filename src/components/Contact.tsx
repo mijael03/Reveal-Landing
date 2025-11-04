@@ -141,30 +141,38 @@ const Contact = () => {
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Nombre
                                             </label>
-                                            <input
-                                                type="text"
-                                                name="nombre"
-                                                value={formData.nombre}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir nombre"
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                                required
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <input
+                                                        type="text"
+                                                        name="nombre"
+                                                        value={formData.nombre}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir nombre"
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Apellido
                                             </label>
-                                            <input
-                                                type="text"
-                                                name="apellido"
-                                                value={formData.apellido}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir apellido"
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                                required
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <input
+                                                        type="text"
+                                                        name="apellido"
+                                                        value={formData.apellido}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir apellido"
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -174,30 +182,38 @@ const Contact = () => {
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Correo electrónico
                                             </label>
-                                            <input
-                                                type="email"
-                                                name="correo"
-                                                value={formData.correo}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir correo"
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                                required
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <input
+                                                        type="email"
+                                                        name="correo"
+                                                        value={formData.correo}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir correo"
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div>
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Número telefónico
                                             </label>
-                                            <input
-                                                type="tel"
-                                                name="telefono"
-                                                value={formData.telefono}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir número"
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                                required
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <input
+                                                        type="tel"
+                                                        name="telefono"
+                                                        value={formData.telefono}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir número"
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -206,14 +222,18 @@ const Contact = () => {
                                         <label className="block text-text-secondary text-sm font-medium mb-2">
                                             Nombre de la empresa
                                         </label>
-                                        <input
-                                            type="text"
-                                            name="empresa"
-                                            value={formData.empresa}
-                                            onChange={handleInputChange}
-                                            placeholder="Escribir nombre de la empresa"
-                                            className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                        />
+                                        <div className="rounded-lg p-[1px] bg-gradient-border">
+                                            <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                <input
+                                                    type="text"
+                                                    name="empresa"
+                                                    value={formData.empresa}
+                                                    onChange={handleInputChange}
+                                                    placeholder="Escribir nombre de la empresa"
+                                                    className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
 
                                     {/* Fourth Row - Additional Comments */}
@@ -221,14 +241,18 @@ const Contact = () => {
                                         <label className="block text-text-secondary text-sm font-medium mb-2">
                                             Comentario adicional
                                         </label>
-                                        <textarea
-                                            name="comentario"
-                                            value={formData.comentario}
-                                            onChange={handleInputChange}
-                                            placeholder="Escribir comentario adicional..."
-                                            rows={4}
-                                            className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors resize-none"
-                                        />
+                                        <div className="rounded-lg p-[1px] bg-gradient-border">
+                                            <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                <textarea
+                                                    name="comentario"
+                                                    value={formData.comentario}
+                                                    onChange={handleInputChange}
+                                                    placeholder="Escribir comentario adicional..."
+                                                    rows={4}
+                                                    className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors resize-none"
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
 
                                     {/* Submit Button */}
@@ -296,15 +320,19 @@ const Contact = () => {
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Nombre
                                             </label>
-                                            <input
-                                                type="text"
-                                                name="nombre"
-                                                value={formData.nombre}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir nombre"
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                                required
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <input
+                                                        type="text"
+                                                        name="nombre"
+                                                        value={formData.nombre}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir nombre"
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {/* Last Name */}
@@ -312,15 +340,19 @@ const Contact = () => {
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Apellido
                                             </label>
-                                            <input
-                                                type="text"
-                                                name="apellido"
-                                                value={formData.apellido}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir apellido"
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                                required
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <input
+                                                        type="text"
+                                                        name="apellido"
+                                                        value={formData.apellido}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir apellido"
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {/* Email */}
@@ -328,15 +360,19 @@ const Contact = () => {
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Correo electrónico
                                             </label>
-                                            <input
-                                                type="email"
-                                                name="correo"
-                                                value={formData.correo}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir correo"
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                                required
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <input
+                                                        type="email"
+                                                        name="correo"
+                                                        value={formData.correo}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir correo"
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {/* Phone */}
@@ -344,15 +380,19 @@ const Contact = () => {
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Número telefónico
                                             </label>
-                                            <input
-                                                type="tel"
-                                                name="telefono"
-                                                value={formData.telefono}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir número"
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                                required
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <input
+                                                        type="tel"
+                                                        name="telefono"
+                                                        value={formData.telefono}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir número"
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {/* Company Name */}
@@ -360,14 +400,18 @@ const Contact = () => {
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Nombre de la empresa
                                             </label>
-                                            <input
-                                                type="text"
-                                                name="empresa"
-                                                value={formData.empresa}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir nombre de la empresa"
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors"
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <input
+                                                        type="text"
+                                                        name="empresa"
+                                                        value={formData.empresa}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir nombre de la empresa"
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors"
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {/* Additional Comments */}
@@ -375,14 +419,18 @@ const Contact = () => {
                                             <label className="block text-text-secondary text-sm font-medium mb-2">
                                                 Comentario adicional
                                             </label>
-                                            <textarea
-                                                name="comentario"
-                                                value={formData.comentario}
-                                                onChange={handleInputChange}
-                                                placeholder="Escribir comentario adicional..."
-                                                rows={4}
-                                                className="w-full px-4 py-3 border border-gray-600 bg-primary-overlay rounded-lg text-text-primary focus:outline-none focus:border-text-primary transition-colors resize-none"
-                                            />
+                                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                                    <textarea
+                                                        name="comentario"
+                                                        value={formData.comentario}
+                                                        onChange={handleInputChange}
+                                                        placeholder="Escribir comentario adicional..."
+                                                        rows={4}
+                                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-text-primary focus:outline-none transition-colors resize-none"
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         {/* Submit Button */}

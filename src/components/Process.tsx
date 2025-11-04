@@ -71,7 +71,7 @@ const Process = () => {
     const step1Icons = [
         { icon: "/autocad-icon.svg", name: "AutoCAD" },
         { icon: "/revit-icon.svg", name: "Revit" },
-        { icon: "/sketchup_icon.svg", name: "SketchUp" }
+        { icon: "/sketchup-icon.svg", name: "SketchUp" }
     ]
 
     const features = [
@@ -149,12 +149,19 @@ const Process = () => {
                                             transitionDelay: `${400 + (index * 100)}ms` // ⚡ Reducido de 1000ms + 150ms a 400ms + 100ms
                                         }}
                                     >
-                                        <div className="w-24 h-24 bg-neutral-500 rounded-2xl flex justify-center items-center hover:scale-105 transition-transform duration-300">
-                                            <img
-                                                src={item.icon}
-                                                alt={item.name}
-                                                className="w-14 h-14"
-                                            />
+                                        <div
+                                            className="w-24 h-24 rounded-2xl p-[1px] hover:scale-105 transition-transform duration-300"
+                                            style={{
+                                                background: 'linear-gradient(2.53deg, rgba(255, 255, 255, 0.08) -3.17%, rgba(255, 255, 255, 0.8) 52.21%, rgba(255, 255, 255, 0.08) 119.97%)'
+                                            }}
+                                        >
+                                            <div className="w-full h-full rounded-2xl bg-primary-bg flex justify-center items-center">
+                                                <img
+                                                    src={item.icon}
+                                                    alt={item.name}
+                                                    className="w-14 h-14"
+                                                />
+                                            </div>
                                         </div>
                                         <span className="text-text-primary text-sm">{item.name}</span>
                                     </div>
@@ -175,8 +182,10 @@ const Process = () => {
                             }}
                         >
                             {/* Contenedor con borde gradiente */}
-                            <div className="rounded-lg p-[1px] mb-12 hover:scale-105 transition-transform duration-300 bg-gradient-green-yellow">
-                                <div className="w-44 h-44 bg-neutral-500 rounded-lg flex items-center justify-center">
+                            <div className="rounded-lg p-[1px] mb-12 hover:scale-105 transition-transform duration-300" style={{
+                                                background: 'linear-gradient(2.53deg, rgba(255, 255, 255, 0.08) -3.17%, rgba(255, 255, 255, 0.8) 52.21%, rgba(255, 255, 255, 0.08) 119.97%)'
+                                            }}>
+                                <div className="w-44 h-44 bg-primary-bg rounded-lg flex items-center justify-center">
                                     <div className="flex flex-col items-center">
                                         <img
                                             src="/icon.svg"
@@ -239,12 +248,19 @@ const Process = () => {
                                             transitionDelay: `${800 + (index * 100)}ms` // ⚡ Reducido de 1600ms + 150ms a 800ms + 100ms
                                         }}
                                     >
-                                        <div className="w-24 h-24 bg-neutral-500 rounded-2xl flex justify-center items-center hover:scale-105 transition-transform duration-300">
-                                            <img
-                                                src={feature.icon}
-                                                alt={feature.title}
-                                                className="w-14 h-14"
-                                            />
+                                        <div
+                                            className="w-24 h-24 rounded-2xl p-[1px] hover:scale-105 transition-transform duration-300"
+                                            style={{
+                                                background: 'linear-gradient(2.53deg, rgba(255, 255, 255, 0.08) -3.17%, rgba(255, 255, 255, 0.8) 52.21%, rgba(255, 255, 255, 0.08) 119.97%)'
+                                            }}
+                                        >
+                                            <div className="w-full h-full rounded-2xl bg-primary-bg flex justify-center items-center">
+                                                <img
+                                                    src={feature.icon}
+                                                    alt={feature.title}
+                                                    className="w-14 h-14"
+                                                />
+                                            </div>
                                         </div>
                                         <span className="text-text-primary text-sm">{feature.title}</span>
                                     </div>
@@ -289,36 +305,25 @@ const Process = () => {
                                 </p>
 
                                 <div className="space-y-3">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-12 h-12 bg-neutral-500 rounded-lg flex justify-center items-center">
-                                            <img
-                                                src="/autocad-icon.svg"
-                                                alt="AutoCAD"
-                                                className="w-8 h-8"
-                                            />
+                                    {step1Icons.map((icon) => (
+                                        <div key={icon.name} className="flex items-center gap-3">
+                                            <div
+                                                className="w-12 h-12 rounded-lg p-[1px]"
+                                                style={{
+                                                    background: 'linear-gradient(2.53deg, rgba(255, 255, 255, 0.08) -3.17%, rgba(255, 255, 255, 0.8) 52.21%, rgba(255, 255, 255, 0.08) 119.97%)'
+                                                }}
+                                            >
+                                                <div className="w-full h-full rounded-lg bg-primary-bg flex justify-center items-center">
+                                                    <img
+                                                        src={icon.icon}
+                                                        alt={icon.name}
+                                                        className="w-8 h-8"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <span className="text-text-primary text-sm">{icon.name}</span>
                                         </div>
-                                        <span className="text-text-primary text-sm">AutoCAD</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-12 h-12 bg-neutral-500 rounded-lg flex justify-center items-center">
-                                            <img
-                                                src="/revit-icon.svg"
-                                                alt="Revit"
-                                                className="w-8 h-8"
-                                            />
-                                        </div>
-                                        <span className="text-text-primary text-sm">Revit</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-12 h-12 bg-neutral-500 rounded-lg flex justify-center items-center">
-                                            <img
-                                                src="/sketchup_icon.svg"
-                                                alt="SketchUp"
-                                                className="w-8 h-8"
-                                            />
-                                        </div>
-                                        <span className="text-text-primary text-sm">SketchUp</span>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -356,8 +361,10 @@ const Process = () => {
 
                                 <div className="flex items-center justify-center">
                                     {/* Contenedor con borde gradiente */}
-                                    <div className="rounded-lg p-[1px] bg-gradient-green-yellow">
-                                        <div className="w-20 h-20 bg-neutral-500 rounded-lg flex items-center justify-center">
+                                    <div className="rounded-lg p-[1px]" style={{
+                                                background: 'linear-gradient(2.53deg, rgba(255, 255, 255, 0.08) -3.17%, rgba(255, 255, 255, 0.8) 52.21%, rgba(255, 255, 255, 0.08) 119.97%)'
+                                            }}>
+                                        <div className="w-20 h-20 bg-primary-bg rounded-lg flex items-center justify-center">
                                             <div className="flex flex-col items-center">
                                                 <img
                                                     src="/icon.svg"
@@ -408,26 +415,25 @@ const Process = () => {
                                 </p>
 
                                 <div className="space-y-3">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-12 h-12 bg-neutral-500 rounded-lg flex justify-center items-center">
-                                            <img
-                                                src="/visor_lotes.svg"
-                                                alt="Visor de lotes"
-                                                className="w-8 h-8"
-                                            />
+                                    {features.map((feature) => (
+                                        <div key={feature.title} className="flex items-center gap-3">
+                                            <div
+                                                className="w-12 h-12 rounded-lg p-[1px]"
+                                                style={{
+                                                    background: 'linear-gradient(2.53deg, rgba(255, 255, 255, 0.08) -3.17%, rgba(255, 255, 255, 0.8) 52.21%, rgba(255, 255, 255, 0.08) 119.97%)'
+                                                }}
+                                            >
+                                                <div className="w-full h-full rounded-lg bg-primary-bg flex justify-center items-center">
+                                                    <img
+                                                        src={feature.icon}
+                                                        alt={feature.title}
+                                                        className="w-8 h-8"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <span className="text-text-primary text-sm">{feature.title}</span>
                                         </div>
-                                        <span className="text-text-primary text-sm">Visor de lotes</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-12 h-12 bg-neutral-500 rounded-lg flex justify-center items-center">
-                                            <img
-                                                src="/visor_departamentos.svg"
-                                                alt="Visor de departamentos"
-                                                className="w-8 h-8"
-                                            />
-                                        </div>
-                                        <span className="text-text-primary text-sm">Visor de departamentos</span>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>

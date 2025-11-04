@@ -70,7 +70,7 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                         Completa tus datos y recibe tu acceso a una demo personalizada
                     </p>
                 </div>
-
+                <div className="h-[2px] w-full mb-8 bg-gradient-green-yellow" />
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                     {/* First Row - Name and Last Name */}
@@ -79,29 +79,37 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                             <label className="block text-white text-sm font-medium mb-2">
                                 Nombre
                             </label>
-                            <input
-                                type="text"
-                                name="nombre"
-                                value={formData.nombre}
-                                onChange={handleInputChange}
-                                placeholder="Escribir nombre"
-                                className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
-                                required
-                            />
+                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                    <input
+                                        type="text"
+                                        name="nombre"
+                                        value={formData.nombre}
+                                        onChange={handleInputChange}
+                                        placeholder="Escribir nombre"
+                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none transition-colors"
+                                        required
+                                    />
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label className="block text-white text-sm font-medium mb-2">
                                 Apellido
                             </label>
-                            <input
-                                type="text"
-                                name="apellido"
-                                value={formData.apellido}
-                                onChange={handleInputChange}
-                                placeholder="Escribir apellido"
-                                className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
-                                required
-                            />
+                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                    <input
+                                        type="text"
+                                        name="apellido"
+                                        value={formData.apellido}
+                                        onChange={handleInputChange}
+                                        placeholder="Escribir apellido"
+                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none transition-colors"
+                                        required
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -111,29 +119,37 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                             <label className="block text-white text-sm font-medium mb-2">
                                 Correo corporativo
                             </label>
-                            <input
-                                type="email"
-                                name="correo"
-                                value={formData.correo}
-                                onChange={handleInputChange}
-                                placeholder="Escribir correo"
-                                className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
-                                required
-                            />
+                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                    <input
+                                        type="email"
+                                        name="correo"
+                                        value={formData.correo}
+                                        onChange={handleInputChange}
+                                        placeholder="Escribir correo"
+                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none transition-colors"
+                                        required
+                                    />
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label className="block text-white text-sm font-medium mb-2">
                                 Nombre de la empresa
                             </label>
-                            <input
-                                type="text"
-                                name="empresa"
-                                value={formData.empresa}
-                                onChange={handleInputChange}
-                                placeholder="Escribir nombre de la empresa"
-                                className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
-                                required
-                            />
+                            <div className="rounded-lg p-[1px] bg-gradient-border">
+                                <div className="w-full h-full rounded-lg bg-primary-bg">
+                                    <input
+                                        type="text"
+                                        name="empresa"
+                                        value={formData.empresa}
+                                        onChange={handleInputChange}
+                                        placeholder="Escribir nombre de la empresa"
+                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-white placeholder-white/50 focus:outline-none transition-colors"
+                                        required
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -143,27 +159,29 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                             <label className="block text-white text-sm font-medium mb-2">
                                 País
                             </label>
-                            <div className="relative">
-                                <select
-                                    name="pais"
-                                    value={formData.pais}
-                                    onChange={handleInputChange}
-                                    className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white/50 focus:outline-none focus:border-white/50 transition-colors appearance-none cursor-pointer"
-                                    required
-                                >
-                                    <option value="" className="bg-neutral-900 text-white/50">Selecciona país</option>
-                                    <option value="peru" className="bg-neutral-900 text-white">Perú</option>
-                                    <option value="colombia" className="bg-neutral-900 text-white">Colombia</option>
-                                    <option value="mexico" className="bg-neutral-900 text-white">México</option>
-                                    <option value="chile" className="bg-neutral-900 text-white">Chile</option>
-                                    <option value="argentina" className="bg-neutral-900 text-white">Argentina</option>
-                                    <option value="otro" className="bg-neutral-900 text-white">Otro</option>
-                                </select>
-                                {/* Custom dropdown arrow */}
-                                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                    <svg className="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </svg>
+                            <div className="rounded-lg p-[1px] bg-gradient-border relative">
+                                <div className="w-full h-full rounded-lg bg-primary-bg relative">
+                                    <select
+                                        name="pais"
+                                        value={formData.pais}
+                                        onChange={handleInputChange}
+                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-white/50 focus:outline-none transition-colors appearance-none cursor-pointer"
+                                        required
+                                    >
+                                        <option value="" className="bg-neutral-900 text-white/50">Selecciona país</option>
+                                        <option value="peru" className="bg-neutral-900 text-white">Perú</option>
+                                        <option value="colombia" className="bg-neutral-900 text-white">Colombia</option>
+                                        <option value="mexico" className="bg-neutral-900 text-white">México</option>
+                                        <option value="chile" className="bg-neutral-900 text-white">Chile</option>
+                                        <option value="argentina" className="bg-neutral-900 text-white">Argentina</option>
+                                        <option value="otro" className="bg-neutral-900 text-white">Otro</option>
+                                    </select>
+                                    {/* Custom dropdown arrow */}
+                                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                        <svg className="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -171,24 +189,26 @@ const DemoModal = ({ isOpen, onClose }: DemoModalProps) => {
                             <label className="block text-white text-sm font-medium mb-2">
                                 Producto de interés
                             </label>
-                            <div className="relative">
-                                <select
-                                    name="producto"
-                                    value={formData.producto}
-                                    onChange={handleInputChange}
-                                    className="w-full px-4 py-3 border border-neutral-600 bg-primary-overlay rounded-lg text-white/50 focus:outline-none focus:border-white/50 transition-colors appearance-none cursor-pointer"
-                                    required
-                                >
-                                    <option value="" className="bg-neutral-900 text-white/50">Selecciona producto</option>
-                                    <option value="visor-lotes" className="bg-neutral-900 text-white">Visor de lotes</option>
-                                    <option value="visor-departamentos" className="bg-neutral-900 text-white">Visor de departamentos</option>
-                                    <option value="todos-visores" className="bg-neutral-900 text-white">Todos los visores</option>
-                                </select>
-                                {/* Custom dropdown arrow */}
-                                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                    <svg className="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </svg>
+                            <div className="rounded-lg p-[1px] bg-gradient-border relative">
+                                <div className="w-full h-full rounded-lg bg-primary-bg relative">
+                                    <select
+                                        name="producto"
+                                        value={formData.producto}
+                                        onChange={handleInputChange}
+                                        className="w-full px-4 py-3 bg-primary-overlay rounded-lg text-white/50 focus:outline-none transition-colors appearance-none cursor-pointer"
+                                        required
+                                    >
+                                        <option value="" className="bg-neutral-900 text-white/50">Selecciona producto</option>
+                                        <option value="visor-lotes" className="bg-neutral-900 text-white">Visor de lotes</option>
+                                        <option value="visor-departamentos" className="bg-neutral-900 text-white">Visor de departamentos</option>
+                                        <option value="todos-visores" className="bg-neutral-900 text-white">Todos los visores</option>
+                                    </select>
+                                    {/* Custom dropdown arrow */}
+                                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                        <svg className="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
