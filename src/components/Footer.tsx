@@ -50,9 +50,10 @@ const Footer = () => {
                     >
 
                         <a
-                            href="#"
+                            href="https://facebook.com/revealvs"
                             className="hover:scale-110 transition-transform duration-300"
                             aria-label="Facebook"
+                            target="_blank" rel="noopener noreferrer"
                         >
                             <img
                                 src="/facebook.png"
@@ -62,9 +63,10 @@ const Footer = () => {
                         </a>
 
                         <a
-                            href="#"
+                            href="https://www.instagram.com/revealvs/"
                             className="hover:scale-110 transition-transform duration-300"
                             aria-label="Instagram"
+                            target="_blank" rel="noopener noreferrer"
                         >
                             <img
                                 src="/instagram.png"
@@ -74,9 +76,10 @@ const Footer = () => {
                         </a>
 
                         <a
-                            href="#"
+                            href="https://www.linkedin.com/company/revealv/"
                             className="hover:scale-110 transition-transform duration-300"
                             aria-label="LinkedIn"
+                            target="_blank" rel="noopener noreferrer"
                         >
                             <img
                                 src="/linkedin.png"
